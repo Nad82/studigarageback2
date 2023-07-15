@@ -3,3 +3,29 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+   # page_creation_employes:
+       # path: /employes
+       # controller: App\Controller\PagesController::employes
+
+  #  page_gestion_infos_garage:
+       # path: /informations
+       # controller: App\Controller\PagesController::informations
+
+   # page_gestion_des_vehicules:
+       # path: /vehicules
+       # controller: App\Controller\PagesController::vehicules
+
+   # page_gestion_des_temoignages:
+      #  path: /validation
+      #  controller: App\Controller\PagesController::validation
+
+   # page_entree_temoignages_clients:
+       # path: /temoignages
+       # controller: App\Controller\PagesController::temoignages
+
+    #page_gestion_contact_clients:
+   # path: /contact
+    #controller: App\Controller\PagesController::contact
+
+
