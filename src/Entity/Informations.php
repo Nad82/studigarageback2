@@ -6,7 +6,7 @@ use App\Repository\InformationsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: InformationsRepository::class)]
-class Informations
+class informations
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -32,12 +32,12 @@ class Informations
         return $this->id;
     }
 
-    public function getHorairesGarage(): ?int
+    public function getHorairesGarage(): ?string
     {
         return $this->horaires_garage;
     }
 
-    public function setHorairesGarage(int $horaires_garage): static
+    public function setHorairesGarage(string $horaires_garage): static
     {
         $this->horaires_garage = $horaires_garage;
 

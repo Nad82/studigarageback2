@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\FormulaireG;
 use App\Repository\FormulaireGRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +19,10 @@ class FormulaireGController extends AbstractController
     }
 
     #[Route('/formulaireG(id)', name: 'formulaireG_show', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function show($id): Response
+    public function show(FormulaireG $formulaireG): Response
     {
         return $this->render('formulaireG/show.html.twig', [
-            'controller_name' => 'FormulaireGController',
+            'formulaireG' => $formulaireG,
         ]);
     }
 

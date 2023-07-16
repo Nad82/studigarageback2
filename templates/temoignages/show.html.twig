@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}temoignages{% endblock %}
+
+{% block body %}
+<table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">id</th>
+                <td>{{temoignages.id}}</td>
+            </tr>
+            <tr>
+                <th scope="row">nom</th>
+                <td>{{temoignages.nom}}</td>
+            </tr>   
+            <tr>
+                <th scope="row">prenom</th>
+                <td>{{temoignages.prenom}}</td>
+            </tr>
+            <tr>
+                <th scope="row">commentaires</th>
+                <td>{{temoignages.commentaires}}</td>  
+            </tr>           
+            <tr>
+                <th scope="row">notes</th>
+                <td>{{temoignages.notes}}</td>
+            </tr>   
+        </tbody>
+    </table>
+    <a href="{{ path('temoignages_index') }}" class="btn btn-primary">Retour</a>>

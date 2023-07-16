@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Informations;
 use App\Repository\InformationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +18,10 @@ class InformationsController extends AbstractController
         ]);
     }
     #[Route('/informations(id)', name: 'informations_show', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function show($id): Response
+    public function show(Informations $informations): Response
     {
         return $this->render('informations/show.html.twig', [
-            'controller_name' => 'InformationsController',
+            'informations' => $informations,
         ]);
     }
 

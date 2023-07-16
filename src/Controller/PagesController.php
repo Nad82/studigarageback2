@@ -13,7 +13,7 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Employes',
+            'title' => 'employes',
         ]);
     }
     
@@ -22,7 +22,7 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Informations',
+            'title' => 'informations',
         ]);
     }
 
@@ -31,7 +31,7 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Vehicules',
+            'title' => 'vehicules',
         ]);
     }
 
@@ -49,11 +49,11 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Contact',
+            'title' => 'contact',
         ]);
     }
 
-    #[Route('/formulaireG', name: 'page_contact_formulaireG')]
+    #[Route('/formulaireG', name: 'page_formulaireG')]
     public function formulaireG(): Response
     {
         return $this->render('pages/index.html.twig', [
@@ -68,6 +68,22 @@ class PagesController extends AbstractController
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
             'title' => 'formulaireV',
+        ]);
+    }
+    #[Route('/administrateur', name: 'page_administrateur')]
+    public function administrateur(): Response
+    {
+        return $this->render('pages/index.html.twig', [
+            'controller_name' => 'PagesController',
+            'title' => 'administrateur',
+        ]);
+    }
+    #[Route('/gestion', name: 'page_gestion_employes')]  
+    public function gestion(): Response
+    {
+        return $this->render('pages/index.html.twig', [
+            'controller_name' => 'PagesController',
+            'title' => 'gestion',
         ]);
     }
 }

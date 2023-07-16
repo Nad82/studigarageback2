@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Employes;
 use App\Repository\EmployesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,25 +18,22 @@ class EmployesController extends AbstractController
         ]);
     }
     #[Route('/employes(id)', name: 'employes_show', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function show(): Response{
+    public function show(Employes $employes): Response 
+    {
         return $this->render('employes/show.html.twig', [
-            'controller_name' => 'EmployesController',
+            'employes' => $employes
         ]);
     }
-
-#[Route('/employes/create', name: 'employes_create', priority:0, methods: ['GET', 'POST'])]
+    #[Route('/employes/create', name: 'employes_create', priority:0, methods: ['GET', 'POST'])]
     public function create(): Response{
         dd(__METHOD__);
     }
-
-#[Route('/employes/{id}/edit', name: 'employes_edit', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
+    #[Route('/employes/{id}/edit', name: 'employes_edit', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
     public function update(): Response{
         dd(__METHOD__);
     }
-
-#[Route('/employes/{id}/delete', name: 'employes_delete', methods: ['GET'], requirements: ['id' => '\d+'])]
+    #[Route('/employes/{id}/delete', name: 'employes_delete', methods: ['GET'], requirements: ['id' => '\d+'])]
     public function delete(): Response{
         dd(__METHOD__);
     }
-
 }

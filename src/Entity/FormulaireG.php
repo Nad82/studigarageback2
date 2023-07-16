@@ -6,7 +6,7 @@ use App\Repository\FormulaireGRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FormulaireGRepository::class)]
-class FormulaireG
+class formulaireG
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

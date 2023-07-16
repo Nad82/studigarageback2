@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Temoignages;
 use App\Repository\TemoignagesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +18,10 @@ class TemoignagesController extends AbstractController
         ]);
     }
     #[Route('/temoignages(id)', name: 'temoignages_show', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function show($id): Response
+    public function show(Temoignages $temoignages): Response
     {
         return $this->render('temoignages/show.html.twig', [
-            'controller_name' => 'TemoignagesController',
+            'temoignages' => $temoignages,
         ]);
     }
 

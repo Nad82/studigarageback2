@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\FormulaireV;
 use App\Repository\FormulaireVRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +19,10 @@ class FormulaireVController extends AbstractController
     }
 
     #[Route('/formulaireV(id)', name: 'formulaireV_show', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function show($id): Response
+    public function show(FormulaireV $formulaireV): Response
     {
         return $this->render('formulaireV/show.html.twig', [
-            'controller_name' => 'FormulaireVController',
+            'formulaireV' => $formulaireV,
         ]);
     }
 

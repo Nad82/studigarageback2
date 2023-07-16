@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}vehicules{% endblock %}
+
+{% block body %}
+<table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">id</th>
+                <td>{{vehicules.id}}</td>
+            </tr>
+            <tr>
+                <th scope="row">prix</th>
+                <td>{{vehicules.prix}}</td>
+            </tr>   
+            <tr>
+                <th scope="row">kilometrage</th>
+                <td>{{vehicules.kilometrage}}</td>
+            </tr>
+            <tr>
+                <th scope="row">annee</th>
+                <td>{{vehicules.annee}}</td>  
+            </tr>           
+            <tr>
+                <th scope="row">equipements_et_options</th>
+                <td>{{vehicules.equipements_et_options}}</td>
+            </tr>   
+        </tbody>
+    </table>
+    <a href="{{ path('vehicules_index') }}" class="btn btn-primary">Retour</a>>

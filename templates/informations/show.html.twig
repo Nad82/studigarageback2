@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}informations{% endblock %}
+
+{% block body %}
+<table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">id</th>
+                <td>{{informations.id}}</td>
+            </tr>
+            <tr>
+                <th scope="row">horaires</th>
+                <td>{{informations.Email}}</td>
+            </tr>   
+            <tr>
+                <th scope="row">services</th>
+                <td>{{informations.Password}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path('informations_index') }}" class="btn btn-primary">Retour</a>>
+{% endblock %}

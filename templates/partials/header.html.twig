@@ -17,15 +17,19 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{path('page_gestion_contact_clients')}}" role="button" aria-haspopup="true" aria-expanded="false">Contacter les clients</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{path('page_contact_formulaireG')}}">Contacter les clients pour l'atelier</a>
+                                    <a class="dropdown-item" href="{{path('page_formulaireG')}}">Contacter les clients pour l'atelier</a>
                                     <a class="dropdown-item" href="{{path('page_formulaireV')}}">Contacter les clients pour les véhicules</a>
+                                </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{path('page_gestion_employes')}}" role="button" aria-haspopup="true" aria-expanded="false">Gestion compte employés</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{path('page_creation_employes')}}">Compte employés</a>
+                                    <a class="dropdown-item" href="{{path('page_administrateur')}}">Compte administrateur</a>
                                 </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('page_gestion_des_temoignages')}}" role="button" aria-haspopup="true" aria-expanded="false">Gestion des témoignages</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{path('page_creation_employes')}}">Compte employé</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('page_gestion_infos_garage')}}" role="button" aria-haspopup="true" aria-expanded="false">Gestion des infos du garage</a>
