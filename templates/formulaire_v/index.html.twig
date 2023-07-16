@@ -1,0 +1,67 @@
+{% extends 'base.html.twiV' %}
+
+{% block title %}Contact Vehicules{% endblock %}
+
+{% block body %}
+ <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Numero_de_telephone</th>
+                <th scope="col">Message</th>
+                <th scope="col">Client_Contacte</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for FormulaireV in formulaireVs %}
+            <tr>
+                <td scope="row">{{FormulaireV.id}}</td>
+                <td>{{FormulaireV.nom}}</td>
+                    <td>
+                        <a href="{{ path('formulaireV_show', {'id': FormulaireV.id}) }}" class="btn btn-primary">Détails</a>
+                        <a href="{{ path('formulaireV_edit', {'id': FormulaireV.id}) }}" class="btn btn-primary">Modifier</a>
+                        <a href="{{ path('formulaireV_delete', {'id': FormulaireV.id}) }}" class="btn btn-primary">Supprimer</a>
+                    </td>
+
+                <td>{{FormulaireV.prenom}}</td>
+                    <td>
+                        <a href="{{ path('formulaireV_show', {'id': FormulaireV.id}) }}" class="btn btn-primary">Détails</a>
+                        <a href="{{ path('formulaireV_edit', {'id': FormulaireV.id}) }}" class="btn btn-primary">Modifier</a>
+                        <a href="{{ path('formulaireV_delete', {'id': FormulaireV.id}) }}" class="btn btn-primary">Supprimer</a>
+                    </td>
+
+                <td>{{FormulaireV.email}}</td>
+                    <td>
+                        <a href="{{ path('formulaireV_show', {'id': FormulaireV.id}) }}" class="btn btn-primary">Détails</a>
+                        <a href="{{ path('formulaireV_edit', {'id': FormulaireV.id}) }}" class="btn btn-primary">Modifier</a>
+                        <a href="{{ path('formulaireV_delete', {'id': FormulaireV.id}) }}" class="btn btn-primary">Supprimer</a>
+                    </td>
+
+                <td>{{FormulaireV.numero_de_telephone}}</td>    
+                    <td>
+                        <a href="{{ path('formulaireV_show', {'id': FormulaireV.id}) }}" class="btn btn-primary">Détails</a>
+                        <a href="{{ path('formulaireV_edit', {'id': FormulaireV.id}) }}" class="btn btn-primary">Modifier</a>
+                        <a href="{{ path('formulaireV_delete', {'id': FormulaireV.id}) }}" class="btn btn-primary">Supprimer</a>
+                    </td>
+
+                <td>{{FormulaireV.Message}}</td>
+                    <td>
+                        <a href="{{ path('formulaireV_show', {'id': FormulaireV.id}) }}" class="btn btn-primary">Détails</a>
+                        <a href="{{ path('formulaireV_edit', {'id': FormulaireV.id}) }}" class="btn btn-primary">Modifier</a>
+                        <a href="{{ path('formulaireV_delete', {'id': FormulaireV.id}) }}" class="btn btn-primary">Supprimer</a>
+                    </td>
+                <td>{{FormulaireV.Client_Contacte}}</td>
+                    <td>
+                        <a href="{{ path('formulaireV_show', {'id': FormulaireV.id}) }}" class="btn btn-primary">Détails</a>
+                        <a href="{{ path('formulaireV_edit', {'id': FormulaireV.id}) }}" class="btn btn-primary">Modifier</a>
+                        <a href="{{ path('formulaireV_delete', {'id': FormulaireV.id}) }}" class="btn btn-primary">Supprimer</a>
+                    </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

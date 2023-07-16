@@ -21,6 +21,23 @@ class FormulaireGRepository extends ServiceEntityRepository
         parent::__construct($registry, FormulaireG::class);
     }
 
+    public function save(FormulaireG $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(FormulaireG $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 //    /**
 //     * @return FormulaireG[] Returns an array of FormulaireG objects
 //     */

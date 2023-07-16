@@ -26,24 +26,6 @@ class PagesController extends AbstractController
         ]);
     }
 
-    #[Route('/horaires', name: 'page_gestion_horaires_garage')]
-    public function horaires(): Response
-    {
-        return $this->render('pages/index.html.twig', [
-            'controller_name' => 'PagesController',
-            'title' => 'Horaires',
-        ]);
-    }
-
-    #[Route('/Services', name: 'page_gestion_services_garage')]
-    public function services(): Response
-    {
-        return $this->render('pages/index.html.twig', [
-            'controller_name' => 'PagesController',
-            'title' => 'Services',
-        ]);
-    }
-
     #[Route('/vehicules', name: 'page_gestion_des_vehicules')]
     public function vehicules(): Response
     {
@@ -53,30 +35,12 @@ class PagesController extends AbstractController
         ]);
     }
 
-    #[Route('/moderation', name: 'page_gestion_des_temoignages')]
-    public function moderation(): Response
-    {
-        return $this->render('pages/index.html.twig', [
-            'controller_name' => 'PagesController',
-            'title' => 'Moderation',
-        ]);
-    }
-
-    #[Route('/temoignages', name: 'page_entree_temoignages_clients')]
+    #[Route('/temoignages', name: 'page_gestion_des_temoignages')]
     public function temoignages(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Temoignages',
-        ]);
-    }
-
-    #[Route('/validation', name: 'page_validation_temoignages_clients')]
-    public function validation(): Response
-    {
-        return $this->render('pages/index.html.twig', [
-            'controller_name' => 'PagesController',
-            'title' => 'Validation',
+            'title' => 'temoignages',
         ]);
     }
 
@@ -89,21 +53,21 @@ class PagesController extends AbstractController
         ]);
     }
 
-    #[Route('/atelier', name: 'page_contact_client_atelier')]
-    public function atelier(): Response
+    #[Route('/formulaireG', name: 'page_contact_formulaireG')]
+    public function formulaireG(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Atelier',
+            'title' => 'formulaireG',
         ]);
     }
 
-    #[Route('/garage', name: 'page_contact_client_vehicules')]
-    public function garage(): Response
+    #[Route('/formulaireV', name: 'page_formulaireV')]
+    public function formulaireV(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Garage',
+            'title' => 'formulaireV',
         ]);
     }
 }

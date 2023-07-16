@@ -21,6 +21,23 @@ class EmployesRepository extends ServiceEntityRepository
         parent::__construct($registry, Employes::class);
     }
 
+    public function save(Employes $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(Employes $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 //    /**
 //     * @return Employes[] Returns an array of Employes objects
 //     */

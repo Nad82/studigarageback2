@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}vehicules{% endblock %}
+
+{% block body %}
+ <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Annee</th>
+                <th scope="col">Kilometrage</th>
+                <th scope="col">Options_et_equipements</th>
+                <th scope="col">Photos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehicules in vehiculess %}
+            <tr>
+                <td scope="row">{{vehicules.id}}</td>
+                <td>{{vehicules.Prix}}</td>
+                <td>
+                    <a href="{{ path('vehicules_show', {'id': vehicules.id}) }}" class="btn btn-primary">Détails</a>
+                    <a href="{{ path('vehicules_edit', {'id': vehicules.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('vehicules_delete', {'id': vehicules.id}) }}" class="btn btn-primary">Supprimer</a>
+                </td>
+                <td>{{vehicules.Annee}}</td>
+                <td>
+                    <a href="{{ path('vehicules_show', {'id': vehicules.id}) }}" class="btn btn-primary">Détails</a>
+                    <a href="{{ path('vehicules_edit', {'id': vehicules.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('vehicules_delete', {'id': vehicules.id}) }}" class="btn btn-primary">Supprimer</a>
+                </td>
+                <td>{{vehicules.Kilometrage}}</td>
+                <td>
+                    <a href="{{ path('vehicules_show', {'id': vehicules.id}) }}" class="btn btn-primary">Détails</a>
+                    <a href="{{ path('vehicules_edit', {'id': vehicules.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('vehicules_delete', {'id': vehicules.id}) }}" class="btn btn-primary">Supprimer</a>
+                </td>
+                <td>{{vehicules.Options_et_equipements}}</td>
+                <td>
+                    <a href="{{ path('vehicules_show', {'id': vehicules.id}) }}" class="btn btn-primary">Détails</a>
+                    <a href="{{ path('vehicules_edit', {'id': vehicules.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('vehicules_delete', {'id': vehicules.id}) }}" class="btn btn-primary">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<a href="{{ path('vehicules_create') }}" class="btn btn-primary">Ajouter un vehicule</a>
+{% endblock %}
