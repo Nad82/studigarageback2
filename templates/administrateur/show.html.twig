@@ -1,23 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}administrateur{% endblock %}
+{% block title %}Administrateur{% endblock %}
 
 {% block body %}
 <table class="table">
         <tbody>
             <tr>
                 <th scope="row">id</th>
-                <td>{{administrateur.id}}</td>
+                <td>{{Administrateur.id}}</td>
             </tr>
             <tr>
                 <th scope="row">email</th>
-                <td>{{administrateur.email}}</td>
+                <td>{{Administrateur.email}}</td>
             </tr>   
             <tr>
                 <th scope="row">password</th>
-                <td>{{administrateur.password}}</td>
+                <td>{{Administrateur.password}}</td>
             </tr>
         </tbody>
     </table>
-    <a href="{{ path('administrateur_index') }}" class="btn btn-primary">Retour</a>>
+    <a href="{{ path('Administrateur_index') }}" class="btn btn-primary">Retour</a>>
 {% endblock %}

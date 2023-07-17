@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AdministrateurRepository::class)]
-class administrateur
+class Administrateur
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -16,27 +16,27 @@ class administrateur
     private ?int $id = null;
 
     #[ORM\Column(length: 35)]
-    private ?string $Email = null;
+    private ?string $email = null;
 
-    #[ORM\Column(length: 9)]
-    private ?string $Password = null;
+    #[ORM\Column(length: 10)]
+    private ?string $password = null;
 
-    #[ORM\OneToMany(mappedBy: 'administrateur', targetEntity: employes::class)]
-    private Collection $employes;
-
-    #[ORM\OneToMany(mappedBy: 'administrateur', targetEntity: informations::class)]
+    #[ORM\OneToMany(mappedBy: 'administrateur', targetEntity: Information::class)]
     private Collection $informations;
 
-    #[ORM\OneToMany(mappedBy: 'administrateur', targetEntity: temoignages::class)]
+    #[ORM\OneToMany(mappedBy: 'administrateur', targetEntity: Employe::class)]
+    private Collection $employes;
+
+    #[ORM\OneToMany(mappedBy: 'administrateur', targetEntity: Temoignage::class)]
     private Collection $temoignages;
 
-    #[ORM\OneToMany(mappedBy: 'administrateur', targetEntity: vehicules::class)]
+    #[ORM\OneToMany(mappedBy: 'administrateur', targetEntity: Vehicule::class)]
     private Collection $vehicules;
 
     public function __construct()
     {
-        $this->employes = new ArrayCollection();
         $this->informations = new ArrayCollection();
+        $this->employes = new ArrayCollection();
         $this->temoignages = new ArrayCollection();
         $this->vehicules = new ArrayCollection();
     }
@@ -48,67 +48,37 @@ class administrateur
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): static
+    public function setEmail(string $email): static
     {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }
 
     public function getPassword(): ?string
     {
-        return $this->Password;
+        return $this->password;
     }
 
-    public function setPassword(string $Password): static
+    public function setPassword(string $password): static
     {
-        $this->Password = $Password;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, employes>
-     */
-    public function getEmployes(): Collection
-    {
-        return $this->employes;
-    }
-
-    public function addEmploye(employes $employe): static
-    {
-        if (!$this->employes->contains($employe)) {
-            $this->employes->add($employe);
-            $employe->setAdministrateur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEmploye(employes $employe): static
-    {
-        if ($this->employes->removeElement($employe)) {
-            // set the owning side to null (unless already changed)
-            if ($employe->getAdministrateur() === $this) {
-                $employe->setAdministrateur(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, informations>
+     * @return Collection<int, Information>
      */
     public function getInformations(): Collection
     {
         return $this->informations;
     }
 
-    public function addInformation(informations $information): static
+    public function addInformation(Information $information): static
     {
         if (!$this->informations->contains($information)) {
             $this->informations->add($information);
@@ -118,7 +88,7 @@ class administrateur
         return $this;
     }
 
-    public function removeInformation(informations $information): static
+    public function removeInformation(Information $information): static
     {
         if ($this->informations->removeElement($information)) {
             // set the owning side to null (unless already changed)
@@ -131,14 +101,44 @@ class administrateur
     }
 
     /**
-     * @return Collection<int, temoignages>
+     * @return Collection<int, Employe>
+     */
+    public function getEmployes(): Collection
+    {
+        return $this->employes;
+    }
+
+    public function addEmploye(Employe $employe): static
+    {
+        if (!$this->employes->contains($employe)) {
+            $this->employes->add($employe);
+            $employe->setAdministrateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmploye(Employe $employe): static
+    {
+        if ($this->employes->removeElement($employe)) {
+            // set the owning side to null (unless already changed)
+            if ($employe->getAdministrateur() === $this) {
+                $employe->setAdministrateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Temoignage>
      */
     public function getTemoignages(): Collection
     {
         return $this->temoignages;
     }
 
-    public function addTemoignage(temoignages $temoignage): static
+    public function addTemoignage(Temoignage $temoignage): static
     {
         if (!$this->temoignages->contains($temoignage)) {
             $this->temoignages->add($temoignage);
@@ -148,7 +148,7 @@ class administrateur
         return $this;
     }
 
-    public function removeTemoignage(temoignages $temoignage): static
+    public function removeTemoignage(Temoignage $temoignage): static
     {
         if ($this->temoignages->removeElement($temoignage)) {
             // set the owning side to null (unless already changed)
@@ -161,14 +161,14 @@ class administrateur
     }
 
     /**
-     * @return Collection<int, vehicules>
+     * @return Collection<int, Vehicule>
      */
     public function getVehicules(): Collection
     {
         return $this->vehicules;
     }
 
-    public function addVehicule(vehicules $vehicule): static
+    public function addVehicule(Vehicule $vehicule): static
     {
         if (!$this->vehicules->contains($vehicule)) {
             $this->vehicules->add($vehicule);
@@ -178,7 +178,7 @@ class administrateur
         return $this;
     }
 
-    public function removeVehicule(vehicules $vehicule): static
+    public function removeVehicule(Vehicule $vehicule): static
     {
         if ($this->vehicules->removeElement($vehicule)) {
             // set the owning side to null (unless already changed)

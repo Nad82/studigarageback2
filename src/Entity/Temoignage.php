@@ -2,32 +2,32 @@
 
 namespace App\Entity;
 
-use App\Repository\TemoignagesRepository;
+use App\Repository\TemoignageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: TemoignagesRepository::class)]
-class temoignages
+#[ORM\Entity(repositoryClass: TemoignageRepository::class)]
+class Temoignage
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 25)]
-    private ?string $Nom = null;
+    #[ORM\Column(length: 15)]
+    private ?string $nom = null;
 
-    #[ORM\Column(length: 30)]
-    private ?string $Prenom = null;
+    #[ORM\Column(length: 20)]
+    private ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Commentaires = null;
+    private ?string $commentaires = null;
 
     #[ORM\Column]
     private ?int $notes = null;
 
     #[ORM\ManyToOne(inversedBy: 'temoignages')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Employes $employes = null;
+    private ?Employe $employe = null;
 
     #[ORM\ManyToOne(inversedBy: 'temoignages')]
     #[ORM\JoinColumn(nullable: false)]
@@ -40,36 +40,36 @@ class temoignages
 
     public function getNom(): ?string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
-    public function setNom(string $Nom): static
+    public function setNom(string $nom): static
     {
-        $this->Nom = $Nom;
+        $this->nom = $nom;
 
         return $this;
     }
 
     public function getPrenom(): ?string
     {
-        return $this->Prenom;
+        return $this->prenom;
     }
 
-    public function setPrenom(string $Prenom): static
+    public function setPrenom(string $prenom): static
     {
-        $this->Prenom = $Prenom;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
     public function getCommentaires(): ?string
     {
-        return $this->Commentaires;
+        return $this->commentaires;
     }
 
-    public function setCommentaires(string $Commentaires): static
+    public function setCommentaires(string $commentaires): static
     {
-        $this->Commentaires = $Commentaires;
+        $this->commentaires = $commentaires;
 
         return $this;
     }
@@ -86,14 +86,14 @@ class temoignages
         return $this;
     }
 
-    public function getEmployes(): ?Employes
+    public function getEmploye(): ?Employe
     {
-        return $this->employes;
+        return $this->employe;
     }
 
-    public function setEmployes(?Employes $employes): static
+    public function setEmploye(?Employe $employe): static
     {
-        $this->employes = $employes;
+        $this->employe = $employe;
 
         return $this;
     }

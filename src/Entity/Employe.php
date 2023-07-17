@@ -2,29 +2,29 @@
 
 namespace App\Entity;
 
-use App\Repository\EmployesRepository;
+use App\Repository\EmployeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: EmployesRepository::class)]
-class employes
+#[ORM\Entity(repositoryClass: EmployeRepository::class)]
+class Employe
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 30)]
-    private ?string $Email = null;
+    #[ORM\Column(length: 35)]
+    private ?string $email = null;
 
-    #[ORM\Column(length: 8)]
-    private ?string $Password = null;
+    #[ORM\Column(length: 10)]
+    private ?string $password = null;
 
-    #[ORM\OneToMany(mappedBy: 'employes', targetEntity: vehicules::class)]
+    #[ORM\ManyToMany(targetEntity: Vehicule::class, inversedBy: 'employes')]
     private Collection $vehicules;
 
-    #[ORM\OneToMany(mappedBy: 'employes', targetEntity: temoignages::class)]
+    #[ORM\OneToMany(mappedBy: 'employe', targetEntity: Temoignage::class)]
     private Collection $temoignages;
 
     #[ORM\ManyToOne(inversedBy: 'employes')]
@@ -44,82 +44,76 @@ class employes
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): static
+    public function setEmail(string $email): static
     {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }
 
     public function getPassword(): ?string
     {
-        return $this->Password;
+        return $this->password;
     }
 
-    public function setPassword(string $Password): static
+    public function setPassword(string $password): static
     {
-        $this->Password = $Password;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, vehicules>
+     * @return Collection<int, Vehicule>
      */
     public function getVehicules(): Collection
     {
         return $this->vehicules;
     }
 
-    public function addVehicule(vehicules $vehicule): static
+    public function addVehicule(Vehicule $vehicule): static
     {
         if (!$this->vehicules->contains($vehicule)) {
             $this->vehicules->add($vehicule);
-            $vehicule->setEmployes($this);
         }
 
         return $this;
     }
 
-    public function removeVehicule(vehicules $vehicule): static
+    public function removeVehicule(Vehicule $vehicule): static
     {
-        if ($this->vehicules->removeElement($vehicule)) {
-            // set the owning side to null (unless already changed)
-            if ($vehicule->getEmployes() === $this) {
-                $vehicule->setEmployes(null);
-            }
-        }
+        $this->vehicules->removeElement($vehicule);
 
         return $this;
     }
 
     /**
-     * @return Collection<int, temoignages>
+     * @return Collection<int, Temoignage>
      */
     public function getTemoignages(): Collection
     {
         return $this->temoignages;
     }
 
-    public function addTemoignage(temoignages $temoignage): static
+    public function addTemoignage(Temoignage $temoignage): static
     {
         if (!$this->temoignages->contains($temoignage)) {
             $this->temoignages->add($temoignage);
-            $temoignage->setEmployes($this);
+            $temoignage->setEmploye($this);
         }
 
         return $this;
     }
 
-    public function removeTemoignage(temoignages $temoignage): static
+    public function removeTemoignage(Temoignage $temoignage): static
     {
         if ($this->temoignages->removeElement($temoignage)) {
             // set the owning side to null (unless already changed)
-            if ($temoignage->getEmployes() === $this) {
-                $temoignage->setEmployes(null);
+            if ($temoignage->getEmploye() === $this) {
+                $temoignage->setEmploye(null);
             }
         }
 

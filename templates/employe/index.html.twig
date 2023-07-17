@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employes{% endblock %}
+
+{% block body %}
+<table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">email</th>
+                <th scope="col">password</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Employes in Employess %}
+            <tr>
+                <td scope="row">{{Employes.id}}</td>
+                <td>{{Employes.Email}}</td>
+                <td>
+                    <a href="{{ path('Employes_show', {'id': Employes.id}) }}" class="btn btn-primary">Détails</a>
+                    <a href="{{ path('Employes_edit', {'id': Employes.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('Employes_delete', {'id': Employes.id}) }}" class="btn btn-primary">Supprimer</a>
+                </td>
+                <td>{{Employes.Password}}</td>
+                <td>
+                    <a href="{{ path('Employes_show', {'id': Employes.id}) }}" class="btn btn-primary">Détails</a>
+                    <a href="{{ path('Employes_edit', {'id': Employes.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('Employes_delete', {'id': Employes.id}) }}" class="btn btn-primary">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<a href="{{ path('Employes_create') }}" class="btn btn-primary">Ajouter un employe</a>
+{% endblock %}

@@ -3,79 +3,57 @@
 namespace App\Entity;
 
 use App\Repository\InformationsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: InformationsRepository::class)]
-class informations
+class Informations
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $horaires_garage = null;
+    #[ORM\OneToMany(mappedBy: 'informations', targetEntity: FormulaireG::class)]
+    private Collection $formulaireGs;
 
-    #[ORM\Column(length: 255)]
-    private ?string $servicesgarage = null;
-
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?formulaireG $formulaireGs = null;
-
-    #[ORM\ManyToOne(inversedBy: 'informations')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Administrateur $administrateur = null;
+    public function __construct()
+    {
+        $this->formulaireGs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getHorairesGarage(): ?string
-    {
-        return $this->horaires_garage;
-    }
-
-    public function setHorairesGarage(string $horaires_garage): static
-    {
-        $this->horaires_garage = $horaires_garage;
-
-        return $this;
-    }
-
-    public function getServicesgarage(): ?string
-    {
-        return $this->servicesgarage;
-    }
-
-    public function setServicesgarage(string $servicesgarage): static
-    {
-        $this->servicesgarage = $servicesgarage;
-
-        return $this;
-    }
-
-    public function getFormulaireGs(): ?formulaireG
+    /**
+     * @return Collection<int, FormulaireG>
+     */
+    public function getFormulaireGs(): Collection
     {
         return $this->formulaireGs;
     }
 
-    public function setFormulaireGs(formulaireG $formulaireGs): static
+    public function addFormulaireG(FormulaireG $formulaireG): static
     {
-        $this->formulaireGs = $formulaireGs;
+        if (!$this->formulaireGs->contains($formulaireG)) {
+            $this->formulaireGs->add($formulaireG);
+            $formulaireG->setInformations($this);
+        }
 
         return $this;
     }
 
-    public function getAdministrateur(): ?Administrateur
+    public function removeFormulaireG(FormulaireG $formulaireG): static
     {
-        return $this->administrateur;
-    }
-
-    public function setAdministrateur(?Administrateur $administrateur): static
-    {
-        $this->administrateur = $administrateur;
+        if ($this->formulaireGs->removeElement($formulaireG)) {
+            // set the owning side to null (unless already changed)
+            if ($formulaireG->getInformations() === $this) {
+                $formulaireG->setInformations(null);
+            }
+        }
 
         return $this;
     }
