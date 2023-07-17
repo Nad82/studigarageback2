@@ -20,7 +20,24 @@ class AdministrateurRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Administrateur::class);
     }
+    
+    public function save(Administrateur $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
 
+        if ($flush) {
+            $this->getEntityManager()>flush();
+        }
+    }
+
+    public function remove(Administrateur $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()>flush();
+        }
+    }
 //    /**
 //     * @return Administrateur[] Returns an array of Administrateur objects
 //     */

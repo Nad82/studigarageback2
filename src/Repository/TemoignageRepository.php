@@ -21,6 +21,23 @@ class TemoignageRepository extends ServiceEntityRepository
         parent::__construct($registry, Temoignage::class);
     }
 
+    public function save(Temoignage $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(Temoignage $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 //    /**
 //     * @return Temoignage[] Returns an array of Temoignage objects
 //     */

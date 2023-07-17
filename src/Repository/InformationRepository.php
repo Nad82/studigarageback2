@@ -21,6 +21,23 @@ class InformationRepository extends ServiceEntityRepository
         parent::__construct($registry, Information::class);
     }
 
+    public function save(Information $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(Information $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 //    /**
 //     * @return Information[] Returns an array of Information objects
 //     */

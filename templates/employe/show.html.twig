@@ -1,0 +1,25 @@
+{% extens "base.html" %}
+
+{% block title%}Employe{% endblock %}
+
+{% block body %}
+<h1>Employes</h1>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <th scope="row">id</th>
+            <td>{{ employe.id }}</td>
+        </tr>
+        <tr>
+            <th scope="row">email</th>
+            <td>{{ employe.email }}</td>
+        </tr>
+        <tr>
+            <th scope="row">password</th>
+            <td>{{ employe.password }}</td>
+        </tr>
+    </tbody>
+</table>
+<a href="{{ path('employe_index') }}" class="btn btn-primary">Retour</a>
+{% endblock %

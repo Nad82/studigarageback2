@@ -8,39 +8,39 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PagesController extends AbstractController
 {
-    #[Route('/employes', name: 'page_creation_employes')]
-    public function employes(): Response
+    #[Route('/employe', name: 'page_creation_employe')]
+    public function employe(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'employes',
+            'title' => 'Employe',
         ]);
     }
     
-    #[Route('/informations', name: 'page_gestion_infos_garage')]
-    public function informations(): Response
+    #[Route('/Information', name: 'page_gestion_infos_garage')]
+    public function information(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'informations',
+            'title' => 'Information',
         ]);
     }
 
-    #[Route('/vehicules', name: 'page_gestion_des_vehicules')]
-    public function vehicules(): Response
+    #[Route('/vehicule', name: 'page_gestion_des_vehicules')]
+    public function vehicule(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'vehicules',
+            'title' => 'Vehicule',
         ]);
     }
 
-    #[Route('/temoignages', name: 'page_gestion_des_temoignages')]
-    public function temoignages(): Response
+    #[Route('/temoignage', name: 'page_gestion_des_temoignages')]
+    public function temoignage(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'temoignages',
+            'title' => 'Temoignage',
         ]);
     }
 
@@ -49,7 +49,7 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'contact',
+            'title' => 'Contact',
         ]);
     }
 
@@ -58,7 +58,7 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'formulaireG',
+            'title' => 'FormulaireG',
         ]);
     }
 
@@ -67,7 +67,7 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'formulaireV',
+            'title' => 'FormulaireV',
         ]);
     }
     #[Route('/administrateur', name: 'page_administrateur')]
@@ -75,7 +75,7 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'administrateur',
+            'title' => 'Administrateur',
         ]);
     }
     #[Route('/gestion', name: 'page_gestion_employes')]  
@@ -83,7 +83,7 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'gestion',
+            'title' => 'Gestion',
         ]);
     }
 }
