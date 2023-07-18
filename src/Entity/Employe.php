@@ -3,39 +3,29 @@
 namespace App\Entity;
 
 use App\Repository\EmployeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: EmployeRepository::class)]
-class Employe
+class Employe implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 35)]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
     private ?string $password = null;
-
-    #[ORM\ManyToMany(targetEntity: Vehicule::class, inversedBy: 'employes')]
-    private Collection $vehicules;
-
-    #[ORM\OneToMany(mappedBy: 'employe', targetEntity: Temoignage::class)]
-    private Collection $temoignages;
-
-    #[ORM\ManyToOne(inversedBy: 'employes')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Administrateur $administrateur = null;
-
-    public function __construct()
-    {
-        $this->vehicules = new ArrayCollection();
-        $this->temoignages = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -54,7 +44,39 @@ class Employe
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -67,68 +89,11 @@ class Employe
     }
 
     /**
-     * @return Collection<int, Vehicule>
+     * @see UserInterface
      */
-    public function getVehicules(): Collection
+    public function eraseCredentials(): void
     {
-        return $this->vehicules;
-    }
-
-    public function addVehicule(Vehicule $vehicule): static
-    {
-        if (!$this->vehicules->contains($vehicule)) {
-            $this->vehicules->add($vehicule);
-        }
-
-        return $this;
-    }
-
-    public function removeVehicule(Vehicule $vehicule): static
-    {
-        $this->vehicules->removeElement($vehicule);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Temoignage>
-     */
-    public function getTemoignages(): Collection
-    {
-        return $this->temoignages;
-    }
-
-    public function addTemoignage(Temoignage $temoignage): static
-    {
-        if (!$this->temoignages->contains($temoignage)) {
-            $this->temoignages->add($temoignage);
-            $temoignage->setEmploye($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTemoignage(Temoignage $temoignage): static
-    {
-        if ($this->temoignages->removeElement($temoignage)) {
-            // set the owning side to null (unless already changed)
-            if ($temoignage->getEmploye() === $this) {
-                $temoignage->setEmploye(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getAdministrateur(): ?Administrateur
-    {
-        return $this->administrateur;
-    }
-
-    public function setAdministrateur(?Administrateur $administrateur): static
-    {
-        $this->administrateur = $administrateur;
-
-        return $this;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 }

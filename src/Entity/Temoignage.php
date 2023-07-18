@@ -13,7 +13,7 @@ class Temoignage
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 15)]
+    #[ORM\Column(length: 20)]
     private ?string $nom = null;
 
     #[ORM\Column(length: 20)]
@@ -24,14 +24,6 @@ class Temoignage
 
     #[ORM\Column]
     private ?int $notes = null;
-
-    #[ORM\ManyToOne(inversedBy: 'temoignages')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Employe $employe = null;
-
-    #[ORM\ManyToOne(inversedBy: 'temoignages')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Administrateur $administrateur = null;
 
     public function getId(): ?int
     {
@@ -82,30 +74,6 @@ class Temoignage
     public function setNotes(int $notes): static
     {
         $this->notes = $notes;
-
-        return $this;
-    }
-
-    public function getEmploye(): ?Employe
-    {
-        return $this->employe;
-    }
-
-    public function setEmploye(?Employe $employe): static
-    {
-        $this->employe = $employe;
-
-        return $this;
-    }
-
-    public function getAdministrateur(): ?Administrateur
-    {
-        return $this->administrateur;
-    }
-
-    public function setAdministrateur(?Administrateur $administrateur): static
-    {
-        $this->administrateur = $administrateur;
 
         return $this;
     }

@@ -13,10 +13,10 @@ class FormulaireG
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 25)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 25)]
     private ?string $prenom = null;
 
     #[ORM\Column(length: 35)]
@@ -27,10 +27,6 @@ class FormulaireG
 
     #[ORM\Column(length: 255)]
     private ?string $message = null;
-
-    #[ORM\ManyToOne(inversedBy: 'formulaireGs')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Informations $informations = null;
 
     public function getId(): ?int
     {
@@ -93,18 +89,6 @@ class FormulaireG
     public function setMessage(string $message): static
     {
         $this->message = $message;
-
-        return $this;
-    }
-
-    public function getInformations(): ?Informations
-    {
-        return $this->informations;
-    }
-
-    public function setInformations(?Informations $informations): static
-    {
-        $this->informations = $informations;
 
         return $this;
     }

@@ -13,10 +13,10 @@ class FormulaireV
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 20)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 20)]
     private ?string $prenom = null;
 
     #[ORM\Column(length: 35)]
@@ -27,10 +27,6 @@ class FormulaireV
 
     #[ORM\Column(length: 255)]
     private ?string $message = null;
-
-    #[ORM\ManyToOne(inversedBy: 'formulaireVs')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Vehicule $vehicule = null;
 
     public function getId(): ?int
     {
@@ -93,18 +89,6 @@ class FormulaireV
     public function setMessage(string $message): static
     {
         $this->message = $message;
-
-        return $this;
-    }
-
-    public function getVehicule(): ?Vehicule
-    {
-        return $this->vehicule;
-    }
-
-    public function setVehicule(?Vehicule $vehicule): static
-    {
-        $this->vehicule = $vehicule;
 
         return $this;
     }

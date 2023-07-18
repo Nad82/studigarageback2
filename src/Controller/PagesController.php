@@ -17,7 +17,7 @@ class PagesController extends AbstractController
         ]);
     }
     
-    #[Route('/Information', name: 'page_gestion_infos_garage')]
+    #[Route('/information', name: 'page_gestion_infos_garage')]
     public function information(): Response
     {
         return $this->render('pages/index.html.twig', [
@@ -25,7 +25,22 @@ class PagesController extends AbstractController
             'title' => 'Information',
         ]);
     }
-
+    #[Route('/horaires', name: 'page_horaires_garage')]
+    public function horaire(): Response
+    {
+        return $this->render('pages/index.html.twig', [
+            'controller_name' => 'PagesController',
+            'title' => 'Horaires',
+        ]);
+    }
+    #[Route('/services', name: 'page_gestion_services_garage')]
+    public function service(): Response
+    {
+        return $this->render('pages/index.html.twig', [
+            'controller_name' => 'PagesController',
+            'title' => 'Services',
+        ]);
+    }
     #[Route('/vehicule', name: 'page_gestion_des_vehicules')]
     public function vehicule(): Response
     {
@@ -53,7 +68,7 @@ class PagesController extends AbstractController
         ]);
     }
 
-    #[Route('/formulaireG', name: 'page_formulaireG')]
+    #[Route('/formulaire/g', name: 'page_formulaireG')]
     public function formulaireG(): Response
     {
         return $this->render('pages/index.html.twig', [
@@ -62,7 +77,7 @@ class PagesController extends AbstractController
         ]);
     }
 
-    #[Route('/formulaireV', name: 'page_formulaireV')]
+    #[Route('/formulaire/v', name: 'page_formulaireV')]
     public function formulaireV(): Response
     {
         return $this->render('pages/index.html.twig', [
