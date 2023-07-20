@@ -20,7 +20,20 @@ class HorairesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Horaires::class);
     }
-
+    public function save(Horaires $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+    public function remove(Horaires $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 //    /**
 //     * @return Horaires[] Returns an array of Horaires objects
 //     */

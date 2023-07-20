@@ -38,6 +38,20 @@ class EmployeRepository extends ServiceEntityRepository implements PasswordUpgra
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
     }
+    public function save(Employe $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+    public function remove(Employe $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 
 //    /**
 //     * @return Employe[] Returns an array of Employe objects

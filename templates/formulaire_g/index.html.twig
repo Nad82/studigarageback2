@@ -1,20 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FormulaireGController!{% endblock %}
+{% block title %}FormulaireG{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+h1>Formulaire Atelier</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Nadège/Desktop/BACK GARAGE/studigarageback/src/Controller/FormulaireGController.php'|file_link(0) }}">src/Controller/FormulaireGController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Nadège/Desktop/BACK GARAGE/studigarageback/templates/formulaire_g/index.html.twig'|file_link(0) }}">templates/formulaire_g/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope= 'col'>id</th>
+                <th scope= 'col'>nom</th>
+                <th scope= 'col'>prenom</th>
+                <th scope= 'col'>email</th>
+                <th scope= 'col'>numero_de_telephone</th>
+                <th scope= 'col'>message</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formulaireG in formulaireGs %}
+            <tr>
+                <td>{{ formulaireG.id }}</td>
+                <td>{{ formulaireG.nom }}</td>
+                <td>{{ formulaireG.prenom }}</td>
+                <td>{{ formulaireG.email }}</td>
+                <td>{{ formulaireG.numero_de_telephone }}</td>
+                <td>{{ formulaireG.message }}</td>
+                <td>
+                    <a href="{{ path('formulaire/g_show', {'id': formulaireG.id}) }}">Details</a>
+                    <a href="{{ path('formulaire/g_edit', {'id': formulaireG.id}) }}">Modifier</a>
+                    <a href="{{ path('formulaire/g_delete', {'id': formulaireG.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

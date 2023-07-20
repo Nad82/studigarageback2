@@ -1,20 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello VehiculeController!{% endblock %}
+{% block title %}FormulaireG{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+h1>Formulaire Atelier</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Nadège/Desktop/BACK GARAGE/studigarageback/src/Controller/VehiculeController.php'|file_link(0) }}">src/Controller/VehiculeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Nadège/Desktop/BACK GARAGE/studigarageback/templates/vehicule/index.html.twig'|file_link(0) }}">templates/vehicule/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope= 'col'>id</th>
+                <th scope= 'col'>image_filename</th>
+                <th scope= 'col'>prix</th>
+                <th scope= 'col'>kilometrage</th>
+                <th scope= 'col'>annee_circulation</th>
+                <th scope= 'col'>equipements_et_options</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vehicule in vehicules %}
+            <tr>
+                <td>{{ vehicule.id }}</td>
+                <td>{{ vehicule.image_filename }}</td>
+                <td>{{ vehicule.prix }}</td>
+                <td>{{ vehicule.kilometrage }}</td>
+                <td>{{ vehicule.annee_circulation }}</td>
+                <td>{{ vehicule.equipements_et_options }}</td>
+                <td>
+                    <a href="{{ path('vehicule_show', {'id': vehicule.id}) }}">Details</a>
+                    <a href="{{ path('vehicule_edit', {'id': vehicule.id}) }}">Modifier</a>
+                    <a href="{{ path('vehicule_delete', {'id': vehicule.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('vehicule_create') }}">Nouvel vehicule</a>
 {% endblock %}

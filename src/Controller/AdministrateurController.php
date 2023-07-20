@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/administrateur')]
 class AdministrateurController extends AbstractController
 {
-    #[Route('/', name: 'app_administrateur_index', methods: ['GET'])]
+    #[Route('/', name: 'administrateur_index', methods: ['GET'])]
     public function index(AdministrateurRepository $administrateurRepository): Response
     {
         return $this->render('administrateur/index.html.twig', [
@@ -22,7 +22,7 @@ class AdministrateurController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_administrateur_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'administrateur_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $administrateur = new Administrateur();
@@ -33,7 +33,7 @@ class AdministrateurController extends AbstractController
             $entityManager->persist($administrateur);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_administrateur_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('administrateur_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('administrateur/new.html.twig', [
@@ -42,7 +42,7 @@ class AdministrateurController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_administrateur_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'administrateur_show', methods: ['GET'])]
     public function show(Administrateur $administrateur): Response
     {
         return $this->render('administrateur/show.html.twig', [
@@ -50,7 +50,7 @@ class AdministrateurController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_administrateur_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'administrateur_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Administrateur $administrateur, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(AdministrateurType::class, $administrateur);
@@ -59,7 +59,7 @@ class AdministrateurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_administrateur_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('administrateur_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('administrateur/edit.html.twig', [
@@ -68,7 +68,7 @@ class AdministrateurController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_administrateur_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'administrateur_delete', methods: ['POST'])]
     public function delete(Request $request, Administrateur $administrateur, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$administrateur->getId(), $request->request->get('_token'))) {
@@ -76,6 +76,6 @@ class AdministrateurController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_administrateur_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('administrateur_index', [], Response::HTTP_SEE_OTHER);
     }
 }

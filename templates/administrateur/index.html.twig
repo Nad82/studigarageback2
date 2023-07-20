@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Administrateur index{% endblock %}
+{% block title %}Administrateur{% endblock %}
 
 {% block body %}
-    <h1>Administrateur index</h1>
+    <h1>Administrateur</h1>
 
     <table class="table">
         <thead>
@@ -21,8 +21,8 @@
                 <td>{{ administrateur.email }}</td>
                 <td>{{ administrateur.password }}</td>
                 <td>
-                    <a href="{{ path('app_administrateur_show', {'id': administrateur.id}) }}">show</a>
-                    <a href="{{ path('app_administrateur_edit', {'id': administrateur.id}) }}">edit</a>
+                    <a href="{{ path('administrateur_show', {'id': administrateur.id}) }}">Details</a>
+                    <a href="{{ path('administrateur_edit', {'id': administrateur.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_administrateur_new') }}">Create new</a>
+    <a href="{{ path('administrateur_new') }}">Nouvel administrateur</a>
 {% endblock %}

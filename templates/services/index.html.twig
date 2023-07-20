@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+<h1>Services</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for services in servicess %}
+            <tr>
+                <td>{{ services.id }}</td>
+                <td>{{ services.description}}</td>
+                <td>
+                    <a href="{{ path('services_show', {'id': services.id}) }}">Details</a>
+                    <a href="{{ path('services_edit', {'id': services.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

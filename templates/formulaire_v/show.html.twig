@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Details Formulaire Vehicule{% endblock %}
+
+{% block body %}
+<h1>Details Formulaire Vehicule</h1>
+
+table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formulaireV.id }}</td>
+            </tr>
+            <tr>
+                <th>nom</th>
+                <td>{{ formulaireV.nom }}</td>
+            </tr>
+            <tr>
+                <th>prenom</th>
+                <td>{{ formulaireV.prenom }}</td>
+            </tr>
+            <tr>
+                <th>email</th>
+                <td>{{ formulaireV.email }}</td>
+            </tr>
+            <tr>
+                <th>numero_de_telephone</th>
+                <td>{{ formulaireV.numero_de_telephone }}</td>
+            </tr>
+            <tr>
+                <th>message</th>
+                <td>{{ formulaireV.message }}</td>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('formulaire_v_index') }}">Retour</a>
+
+    <a href="{{ path('formulaire_v_edit'), {'id': formulaireV.id}}}">Modifier</a>
+
+    {{ include('formulaire_v/delete_form.html.twig')}}
+{% endblock %}

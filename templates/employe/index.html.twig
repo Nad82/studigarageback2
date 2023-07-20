@@ -3,28 +3,37 @@
 {% block title %}Employe{% endblock %}
 
 {% block body %}
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">id</th>
-        <th scope="col">email</th>
-        <th scope="col">password</th>   
-    </tr>
-    </thead>
+h1>Employe</h1>
 
-    <tbody>
-    {% for employe in employes %}
-        <tr>
-            <th scope="row">{{ employe.id }}</th>
-            <td>{{ employe.email }}</td>
-            <td>{{ employe.password }}</td>
-            <td>
-                <a href="{{ path('employe_show', {'id': employe.id}) }}" class="btn btn-primary">Details</a>
-                <a href="{{ path('employe_edit', {'id': employe.id}) }}" class="btn btn-primary">Modifier</a>
-                <a href="{{ path('employe_delete', {'id': employe.id}) }}" class="btn btn-danger">Supprimer</a>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<a href="{{ path('employe_create') }}" class="btn btn-primary">Ajouter un employé</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope= 'col'>Id</th>
+                <th scope= 'col'>Email</th>
+                <th scope= 'col'>Password</th>
+                <th scope= 'col'>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employe in employes %}
+            <tr>
+                <td>{{ employe.id }}</td>
+                <td>{{ employe.email }}</td>
+                <td>{{ employe.password }}</td>
+                <td>
+                    <a href="{{ path('employe_show', {'id': employe.id}) }}">Details</a>
+                    <a href="{{ path('employe_edit', {'id': employe.id}) }}">Modifier</a>
+                    <a href="{{ path('employe_delete', {'id': employe.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('employe_create') }}">Nouvel employe</a>
+
 {% endblock %}

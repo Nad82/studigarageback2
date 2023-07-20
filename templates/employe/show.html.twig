@@ -1,25 +1,30 @@
-{% extens "base.html" %}
+{% extends "base.html.twig" %}
 
-{% block title%}Employe{% endblock %}
+{% block title %}Details Employe{% endblock %}
 
 {% block body %}
 <h1>Employes</h1>
 
-<table class="table">
-    <tbody>
-        <tr>
-            <th scope="row">id</th>
-            <td>{{ employe.id }}</td>
-        </tr>
-        <tr>
-            <th scope="row">email</th>
-            <td>{{ employe.email }}</td>
-        </tr>
-        <tr>
-            <th scope="row">password</th>
-            <td>{{ employe.password }}</td>
-        </tr>
-    </tbody>
-</table>
-<a href="{{ path('employe_index') }}" class="btn btn-primary">Retour</a>
-{% endblock %
+table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ employe.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ employe.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ employe.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('employe_index') }}">Retour</a>
+
+    <a href="{{ path('employe_edit', {'id': employe.id}) }}">Modifier</a>
+
+    {{ include('employe/_delete_form.html.twig') }}
+{% endblock %}
