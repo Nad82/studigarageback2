@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
 #[ORM\Entity(repositoryClass: AdministrateurRepository::class)]
 class Administrateur implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -15,7 +16,7 @@ class Administrateur implements UserInterface, PasswordAuthenticatedUserInterfac
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180, unique: true)]
+    #[ORM\Column(length: 35, unique: true)]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -62,6 +63,7 @@ class Administrateur implements UserInterface, PasswordAuthenticatedUserInterfac
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_ADMIN';
 
         return array_unique($roles);
     }
