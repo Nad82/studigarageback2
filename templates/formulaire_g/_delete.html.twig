@@ -1,4 +1,0 @@
-<form method="post" action="{{ path('formulaire/g_delete', {'id': formulaireG.id}) }}" onsubmit="return confirm('Etes vous sûr de vouloir supprimer le fichier?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ formulaireG.id) }}">
-    <button class="btn">Supprimer</button>
-</form>

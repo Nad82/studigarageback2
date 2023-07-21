@@ -15,7 +15,7 @@ class FormulaireVController extends AbstractController
     public function index(FormulaireVRepository $repo): Response
     {
         return $this->render('formulaire_v/index.html.twig', [
-            'formulaireV' => $repo->findAll(),
+            'formulaireVs' => $repo->findAll(),
         ]);
     }
     #[Route('/formulaire/v/{id}', name: 'formulaire_v_show', requirements: ['id' => '\d+'], methods: ['GET'])]

@@ -3,7 +3,7 @@
 {% block title %}Horaires{% endblock %}
 
 {% block body %}
-h1>Horaires d'ouverture</h1>
+    <h1>Horaires d'ouverture</h1>
 
     <table class="table">
         <thead>
@@ -19,27 +19,28 @@ h1>Horaires d'ouverture</h1>
             </tr>
         </thead>
         <tbody>
-        {% for horaires in horairess %}
-            <tr>
-                <td>{{ horaires.id }}</td>
-                <td>{{ horaires.lundi }}</td>
-                <td>{{ horaires.mardi }}</td>
-                <td>{{ horaires.mercredi }}</td>
-                <td>{{ horaires.jeudi }}</td>
-                <td>{{ horaires.vendredi }}</td>
-                <td>{{ horaires.samedi }}</td>
-                <td>{{ horaires.dimanche }}</td>
-                <td>
-                    <a href="{{ path('horaires_show', {'id': horaires.id}) }}">Details</a>
-                    <a href="{{ path('horaires_edit', {'id': horaires.id}) }}">Modifier</a>
-                    <a href="{{ path('horaires_delete', {'id': horaires.id}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
+            {% for horaires in horairess %}
+                <tr>
+                    <td>{{ horaires.id }}</td>
+                    <td>{{ horaires.lundi }}</td>
+                    <td>{{ horaires.mardi }}</td>
+                    <td>{{ horaires.mercredi }}</td>
+                    <td>{{ horaires.jeudi }}</td>
+                    <td>{{ horaires.vendredi }}</td>
+                    <td>{{ horaires.samedi }}</td>
+                    <td>{{ horaires.dimanche }}</td>
+                    <td>
+                        <a href="{{ path('horaires_show', {'id': horaires.id}) }}">Details</a>
+                        <a href="{{ path('horaires_edit', {'id': horaires.id}) }}">Modifier</a>
+                        <a href="{{ path('horaires_delete', {'id': horaires.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
+    <a href="{{ path('horaires_create') }}">Nouveaux horaires</a>
 {% endblock %}

@@ -15,7 +15,7 @@ class ServicesController extends AbstractController
     public function index(ServicesRepository $repo): Response
     {
         return $this->render('services/index.html.twig', [
-            'services' => $repo->findAll(),
+            'servicess' => $repo->findAll(),
         ]);
     }
     #[Route('/services/{id}', name: 'services_show', requirements: ['id' => '\d+'], methods: ['GET'])]

@@ -8,14 +8,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\VehiculeType;
 
 class VehiculeController extends AbstractController
 {
-    #[Route('/vehicule', name: 'vehicule_index')]
+    #[Route('/vehicule', name: 'vehicule_index', methods: ['GET'])]
     public function index(VehiculeRepository $repo): Response
     {
         return $this->render('vehicule/index.html.twig', [
-            'vehicule' => $repo->findAll(),
+            'vehicules' => $repo->findAll(),
         ]);
     }
     #[Route('/vehicule/{id}', name: 'vehicule_show', requirements: ['id' => '\d+'], methods: ['GET'])]
@@ -30,13 +31,14 @@ class VehiculeController extends AbstractController
     {
         $form = $this->createForm(VehiculeType::class, $vehicule);
         $form->handleRequest($request);
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $repo->save($vehicule, true);
             $this->addFlash('success', 'Vous avez bien ajouté un véhicule avec succès');
             return $this->redirectToRoute('vehicule_index');
         }
         return $this->render('vehicule/create.html.twig', [
-            'formView' => $form->createView(),
+            'form' => $form,
         ]);
     }
     #[Route('/vehicule/{id}/edit', name: 'vehicule_edit', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
@@ -50,7 +52,7 @@ class VehiculeController extends AbstractController
             return $this->redirectToRoute('vehicule_index');
         }
         return $this->render('vehicule/edit.html.twig', [
-            'formView' => $form->createView(),
+            'form' => $form,
         ]);
     }
     #[Route('/vehicule/{id}/delete', name: 'vehicule_delete', requirements: ['id' => '\d+'], methods: ['GET'])]

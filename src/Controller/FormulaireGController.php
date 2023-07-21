@@ -15,7 +15,7 @@ class FormulaireGController extends AbstractController
     public function index(FormulaireGRepository $repo): Response
     {
         return $this->render('formulaire_g/index.html.twig', [
-            'formulaireG' => $repo->findAll(),
+            'formulaireGs' => $repo->findAll(),
         ]);
     }
     #[Route('/formulaire/g/{id}', name: 'formulaire_g_show', requirements: ['id' => '\d+'], methods: ['GET'])]
@@ -30,13 +30,14 @@ class FormulaireGController extends AbstractController
     {
         $form = $this->createForm(FormulaireGType::class, $formulaireG);
         $form->handleRequest($request);
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $repo->save($formulaireG, true);
             $this->addFlash('success', 'Vous avez bien ajouté un formulaire avec succès');
             return $this->redirectToRoute('formulaire_g_index');
         }
         return $this->render('formulaire_g/create.html.twig', [
-            'formView' => $form->createView(),
+            'form' => $form
         ]);
     }
     #[Route('/formulaire/g/{id}/edit', name: 'formulaire_g_edit', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]

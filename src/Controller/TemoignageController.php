@@ -15,7 +15,7 @@ class TemoignageController extends AbstractController
     public function index(TemoignageRepository $repo): Response
     {
         return $this->render('temoignage/index.html.twig', [
-            'temoignage' => $repo->findAll(),
+            'temoignages' => $repo->findAll(),
         ]);
     }
     #[Route('/temoignage/{id}', name: 'temoignage_show', requirements: ['id' => '\d+'], methods: ['GET'])]

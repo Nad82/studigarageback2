@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suppression services{% endblock %}
+
+{% block body %}
+    <h1>Suppression servicese</h1>
+
+    {{ include("/services/_delete.html.twig" , {'button_label': 'Supprimer'})}}
+
+    <a href="{{path('services_index')}}">Retour</a>
+
+{% endblock %}

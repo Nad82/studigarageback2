@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suppression des horaires{% endblock %}
+
+{% block body %}
+    <h1>Suppression des horaires</h1>
+
+    {{ include("/horaires/_delete.html.twig" , {'button_label': 'Supprimer'})}}
+
+    <a href="{{path('horaires_index')}}">Retour</a>
+
+{% endblock %}
