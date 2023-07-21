@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Vehicule;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class VehiculeType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('imageFilename')
+            ->add('prix')
+            ->add('kilometrage')
+            ->add('annee_circulation')
+            ->add('equipements_et_options')
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Vehicule::class,
+        ]);
+    }
+}

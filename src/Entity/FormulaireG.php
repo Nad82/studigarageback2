@@ -58,18 +58,18 @@ class FormulaireG
     private ?string $email = null;
 
     #[ORM\Column(length: 15)]
-    #[Assert\NotBlank(message: 'Le numéro de téléphone est obligatoire')]
+    #[Assert\NotBlank(message: 'Le telephone est obligatoire')]
     #[Assert\Length(
         min: 10,
         max: 15,
-        minMessage: 'Le numéro de téléphone doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le numéro de téléphone doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le téléphone doit contenir au moins {{ limit }} caractères',
+        maxMessage: 'Le téléphone doit contenir au maximum {{ limit }} caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[0-9]+$/',
-        message: 'Le numéro de téléphone doit contenir uniquement des chiffres'
+        message: 'Le téléphone doit contenir uniquement des chiffres'
     )]
-    private ?string $numero_de_telephone = null;
+    private ?string $telephone = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Le message est obligatoire')]
@@ -126,14 +126,14 @@ class FormulaireG
         return $this;
     }
 
-    public function getNumeroDeTelephone(): ?string
+    public function getTelephone(): ?string
     {
-        return $this->numero_de_telephone;
+        return $this->telephone;
     }
 
-    public function setNumeroDeTelephone(string $numero_de_telephone): static
+    public function setTelephone(string $telephone): static
     {
-        $this->numero_de_telephone = $numero_de_telephone;
+        $this->telephone = $telephone;
 
         return $this;
     }

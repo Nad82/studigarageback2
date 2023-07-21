@@ -17,13 +17,13 @@ h1>Formulaire Atelier</h1>
             </tr>
         </thead>
         <tbody>
-        {% for formulaireG in formulaireGs %}
+        {% for formulaireG in formulaireG %}
             <tr>
                 <td>{{ formulaireG.id }}</td>
                 <td>{{ formulaireG.nom }}</td>
                 <td>{{ formulaireG.prenom }}</td>
                 <td>{{ formulaireG.email }}</td>
-                <td>{{ formulaireG.numero_de_telephone }}</td>
+                <td>{{ formulaireG.telephone }}</td>
                 <td>{{ formulaireG.message }}</td>
                 <td>
                     <a href="{{ path('formulaire/g_show', {'id': formulaireG.id}) }}">Details</a>
