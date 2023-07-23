@@ -21,7 +21,7 @@
             {% for vehicule in vehicules %}
                 <tr>
                     <td>{{vehicule.id}}</td>
-                    <td>{{vehicule.imageFileName}}</td>
+                    <td><img src="{{asset('uploads/' ~ vehicule.imageFileName)}}" alt="image" width="100" height="100"></td>
                     <td>{{vehicule.prix}}</td>
                     <td>{{vehicule.kilometrage}}</td>
                     <td>{{vehicule.annee}}</td>
