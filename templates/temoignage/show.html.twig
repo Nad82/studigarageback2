@@ -1,39 +1,39 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Details Temoignage{% endblock %}
+{% block title %}Details temoignage{% endblock %}
 
 {% block body %}
-<h1>Details Temoignage</h1>
+    <h1>details temoignage</h1>
 
-table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ temoignage.id }}</td>
-            </tr>
-            <tr>
-                <th>nom</th>
-                <td>{{ temoignage.nom }}</td>
-            </tr>
-            <tr>
-                <th>prenom</th>
-                <td>{{ temoignage.prenom }}</td>
-            </tr>
-            <tr>
-                <th>commentaires</th>
-                <td>{{ temoignage.commentaires }}</td>
-            </tr>
-            <tr>
-                <th>notes</th>
-                <td>{{ temoignage.notes }}</td>
-            </tr>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>id</th>
+                    <td>{{ temoignage.id }}</td>
+                </tr>
+                <tr>
+                    <th>nom</th>
+                    <td>{{ temoignage.nom }}</td>
+                </tr>
+                <tr>
+                    <th>prenom</th>
+                    <td>{{ temoignage.prenom}}</td>
+                </tr>
+                <tr>
+                    <th>commentaires</th>
+                    <td>{{ temoignage.commentaires }}</td>
+                </tr>
+                <tr>
+                    <th>notes</th>
+                    <td>{{ temoignage.notes }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-        </tbody>
-    </table>
+    <a href="{{ path('temoignage_index')}}">Retour</a>
+    <a href="{{ path('temoignage_edit', {'id': temoignage.id})}}">Modifier</a>
+    <a href="{{ path('temoignage_delete', {'id': temoignage.id})}}">Supprimer</a>
 
-    <a href="{{ path('temoignage_index') }}">Retour</a>
-
-    <a href="{{ path('temoignage_edit'), {'id': temoignage.id}}}">Modifier</a>
-
-    {{ include('temoignage/delete_form.html.twig')}}
 {% endblock %}

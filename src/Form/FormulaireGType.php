@@ -15,7 +15,7 @@ class FormulaireGType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('email')
-            ->add('numero_de_telephone')
+            ->add('telephone')
             ->add('message')
         ;
     }

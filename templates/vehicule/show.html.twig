@@ -1,19 +1,19 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Details Vehicule{% endblock %}
+{% block title %}Details vehicule{% endblock %}
 
 {% block body %}
-<h1>Details Vehicule</h1>
+    <h1>Details vehicule</h1>
 
-table class="table">
+    <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>id</th>
                 <td>{{ vehicule.id }}</td>
             </tr>
             <tr>
-                <th>image_filename</th>
-                <td>{{ vehicule.nom }}</td>
+                <th>imageFileName</th>
+                <td>{{ vehicule.imageFileName }}</td>
             </tr>
             <tr>
                 <th>prix</th>
@@ -24,19 +24,17 @@ table class="table">
                 <td>{{ vehicule.kilometrage }}</td>
             </tr>
             <tr>
-                <th>annee_circulation</th>
-                <td>{{ vehicule.annee_circulation }}</td>
+                <th>annee</th>
+                <td>{{ vehicule.annee }}</td>
             </tr>
             <tr>
-                <th>equipements_et_options</th>
-                <td>{{ vehicule.equipements_et_options }}</td>
-
+                <th>equipements</th>
+                <td>{{ vehicule.equipements }}</td>
+            </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('vehicule_index') }}">Retour</a>
-
-    <a href="{{ path('vehicule_edit', {'id': vehicule.id})}}">Modifier</a>
-
-    {{ include('vehicule/delete_form.html.twig')}}
+    <a href="{{path('vehicule_index')}}">Retour</a>
+    <a href="{{path('vehicule_edit', {'id': vehicule.id})}}">Modifier</a>
+    <a href="{{path('vehicule_delete', {'id': vehicule.id})}}">Supprimer</a>
 {% endblock %}

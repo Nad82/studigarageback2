@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Detail Horaires{% endblock %}
+{% block title %}Details Horaires{% endblock %}
 
 {% block body %}
     <h1>Details Horaires</h1>
@@ -44,5 +44,6 @@
 
     <a href="{{ path('horaires_index')}}">Retour</a>
     <a href="{{ path('horaires_edit', {'id': horaires.id})}}">Modifier</a>
+    <a href="{{ path('horaires_delete', {'id': horaires.id})}}">Supprimer</a>
     
 {% endblock %}

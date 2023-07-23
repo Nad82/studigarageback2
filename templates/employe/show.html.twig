@@ -3,17 +3,17 @@
 {% block title %}Details Employe{% endblock %}
 
 {% block body %}
-    <h1>Employes</h1>
+    <h1>Details Employes</h1>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ employe.id }}</td>
+                <td>{{employe.id}}</td>
             </tr>
             <tr>
                 <th>Email</th>
-                <td>{{ employe.email }}</td>
+                <td>{{employe.email }}</td>
             </tr>
             <tr>
                 <th>Password</th>
@@ -23,7 +23,7 @@
     </table>
 
     <a href="{{ path('employe_index')}}">Retour</a>
-
     <a href="{{ path('employe_edit', {'id': employe.id})}}">Modifier</a>
+    <a href="{{ path('employe_delete', {'id': employe.id})}}">Supprimer</a>
 
 {% endblock %}

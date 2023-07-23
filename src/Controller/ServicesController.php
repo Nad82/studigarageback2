@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Services;
+use App\Form\ServicesType;
 use App\Repository\ServicesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ServicesController extends AbstractController
 {
-    #[Route('/services', name: 'services_index')]
+    #[Route('/services', name: 'services_index', methods: ['GET'], priority: 1)]
     public function index(ServicesRepository $repo): Response
     {
         return $this->render('services/index.html.twig', [
@@ -26,17 +27,18 @@ class ServicesController extends AbstractController
         ]);
     }
     #[Route('/services/create', name: 'services_create', methods: ['GET', 'POST'])]
-    public function create(Request $request, ServicesRepository $repo, Services $services): Response
+    public function create(Request $request,ServicesRepository $repo, Services $services): Response
     {
         $form = $this->createForm(ServicesType::class, $services);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $repo->save($services, true);
             $this->addFlash('success', 'Vous avez bien ajouté un service avec succès');
             return $this->redirectToRoute('services_index');
         }
         return $this->render('services/create.html.twig', [
-            'formView' => $form->createView(),
+            'form' => $form,
         ]);
     }
     #[Route('/services/{id}/edit', name: 'services_edit', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
@@ -44,20 +46,23 @@ class ServicesController extends AbstractController
     {
         $form = $this->createForm(ServicesType::class, $services);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $repo->save($services, true);
             $this->addFlash('success', 'Vous avez bien modifié le service avec succès');
             return $this->redirectToRoute('services_index');
         }
         return $this->render('services/edit.html.twig', [
-            'formView' => $form->createView(),
+            'form' => $form,
         ]);
     }
-    #[Route('/services/{id}/delete', name: 'services_delete', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function delete(Services $services, ServicesRepository $repo): Response
+    #[Route('/services/{id}/delete', name: 'services_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
+    public function delete(Request $request, Services $services,ServicesRepository $repo): Response
     {
-        $repo->remove($services, true);
-        $this->addFlash('success', 'Vous avez bien supprimé le service avec succès');
+        if ($this->isCsrfTokenValid('delete'.$services->getId(), $request->request->get('_token'))) {
+            $repo->remove($services, true);
+            $this->addFlash('success', 'Vous avez bien supprimé le service avec succès');
+        }
         return $this->redirectToRoute('services_index');
     }
 }

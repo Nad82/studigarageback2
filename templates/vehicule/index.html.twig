@@ -1,42 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}FormulaireG{% endblock %}
+{% block title %}Vehicules{% endblock %}
 
 {% block body %}
-<h1>Formulaire Atelier</h1>
+    <h1>Vehicules</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th scope= 'col'>id</th>
-                <th scope= 'col'>image_filename</th>
-                <th scope= 'col'>prix</th>
-                <th scope= 'col'>kilometrage</th>
-                <th scope= 'col'>annee_circulation</th>
-                <th scope= 'col'>equipements_et_options</th>
+                <th>id</th>
+                <th>imageFileName</th>
+                <th>prix</th>
+                <th>kilometrage</th>
+                <th>annee</th>
+                <th>equipements</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for vehicule in vehicules %}
-            <tr>
-                <td>{{ vehicule.id }}</td>
-                <td>{{ vehicule.image_filename }}</td>
-                <td>{{ vehicule.prix }}</td>
-                <td>{{ vehicule.kilometrage }}</td>
-                <td>{{ vehicule.annee_circulation }}</td>
-                <td>{{ vehicule.equipements_et_options }}</td>
-                <td>
-                    <a href="{{ path('vehicule_show', {'id': vehicule.id}) }}">Details</a>
-                    <a href="{{ path('vehicule_edit', {'id': vehicule.id}) }}">Modifier</a>
-                    <a href="{{ path('vehicule_delete', {'id': vehicule.id}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
+            {% for vehicule in vehicules %}
+                <tr>
+                    <td>{{vehicule.id}}</td>
+                    <td>{{vehicule.imageFileName}}</td>
+                    <td>{{vehicule.prix}}</td>
+                    <td>{{vehicule.kilometrage}}</td>
+                    <td>{{vehicule.annee}}</td>
+                    <td>{{vehicule.equipements}}</td>
+                    <td>
+                        <a href="{{path('vehicule_show', {'id': vehicule.id})}}">Details</a>
+                        <a href="{{path('vehicule_edit', {'id': vehicule.id})}}">Modifier</a>
+                        <a href="{{path('vehicule_delete', {'id': vehicule.id})}}">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucune donnée trouvée</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('vehicule_create') }}">Nouveau vehicule</a>
+
+    <a href="{{path('vehicule_create')}}">Creer vehicule</a>
+
 {% endblock %}
+

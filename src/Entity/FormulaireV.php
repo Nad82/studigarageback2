@@ -69,7 +69,7 @@ class FormulaireV
         pattern: '/^[0-9]+$/',
         message: 'Le numéro de téléphone doit contenir uniquement des chiffres'
     )]
-    private ?string $numero_de_telephone = null;
+    private ?string $telephone = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Le message est obligatoire')]
@@ -126,14 +126,14 @@ class FormulaireV
         return $this;
     }
 
-    public function getNumeroDeTelephone(): ?string
+    public function getTelephone(): ?string
     {
-        return $this->numero_de_telephone;
+        return $this->telephone;
     }
 
-    public function setNumeroDeTelephone(string $numero_de_telephone): static
+    public function setTelephone(string $numero_de_telephone): static
     {
-        $this->numero_de_telephone = $numero_de_telephone;
+        $this->telephone = $numero_de_telephone;
 
         return $this;
     }

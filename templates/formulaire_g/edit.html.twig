@@ -5,9 +5,8 @@
 {% block body %}
     <h1>Modifier Formulaire Atelier</h1>
 
-    {{ include("/formulaire/g/_form.html.twig" , {'button_label': 'Modifier'}) }}
+    {{ include("/formulaire_g/_form.html.twig" , {'button_label': 'Modifier'})}}
 
-    <a href="{{path('formulaire/g_index')}}">Retour</a>
+    <a href="{{path('formulaire_g_index')}}">Retour</a>
 
-    {{ include('formulaire/g/_delete_form.html.twig')}}
-{% endblock %
+{% endblock %}

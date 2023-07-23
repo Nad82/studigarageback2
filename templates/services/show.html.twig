@@ -1,22 +1,25 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Details Services{% endblock %}
+{% block title %}Details services{% endblock %}
 
 {% block body %}
-    <h1>Detail Services</h1>
+    <h1>services</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ description.id }}</td>
+                <th>id</th>
+                <td>{{ services.id }}</td>
+            </tr>
+            <tr>
+                <th>description</th>
+                <td>{{ services.description }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('description_index')}}">Retour</a>
+    <a href="{{ path('services_index')}}">Retour</a>
+    <a href="{{ path('services_edit', {'id': services.id})}}">Modifier</a>
+    <a href="{{ path('services_delete', {'id': services.id})}}">Supprimer</a>
 
-    <a href="{{ path('description_edit', {'id': description.id})}}">Modifier</a>
-
-    {{ include('description/delete_form.html.twig')}}
 {% endblock %}

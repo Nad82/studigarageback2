@@ -19,7 +19,7 @@ class Vehicule
     private ?int $id = null;
     
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $imageFilename = null;
+    private ?string $imageFileName = null;
 
     #[ORM\Column]
     #[Assert\NotBlank(message: 'Le prix est obligatoire')]
@@ -61,7 +61,7 @@ class Vehicule
         pattern: '/^[0-9]+/',
         message: 'L\'année de circulation doit contenir uniquement des chiffres'
     )]
-    private ?int $annee_circulation = null;
+    private ?int $annee = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Les équipements et options sont obligatoires')]
@@ -75,21 +75,21 @@ class Vehicule
         pattern: '/^[a-zA-Z0-9]+/',
         message: 'Les équipements et options doivent contenir uniquement des chiffres et des lettres'
     )]
-    private ?string $equipements_et_options = null;
+    private ?string $equipements = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getImageFilename(): ?string
+    public function getImageFileName(): ?string
     {
-        return $this->imageFilename;
+        return $this->imageFileName;
     }
 
-    public function setImageFilename(?string $imageFilename): static
+    public function setImageFilename(?string $imageFileName): static
     {
-        $this->imageFilename = $imageFilename;
+        $this->imageFileName = $imageFileName;
 
         return $this;
     }
@@ -118,26 +118,26 @@ class Vehicule
         return $this;
     }
 
-    public function getAnneeCirculation(): ?int
+    public function getAnnee(): ?int
     {
-        return $this->annee_circulation;
+        return $this->annee;
     }
 
-    public function setAnneeCirculation(int $annee_circulation): static
+    public function setAnnee(int $annee): static
     {
-        $this->annee_circulation = $annee_circulation;
+        $this->annee = $annee;
 
         return $this;
     }
 
-    public function getEquipementsEtOptions(): ?string
+    public function getEquipements(): ?string
     {
-        return $this->equipements_et_options;
+        return $this->equipements;
     }
 
-    public function setEquipementsEtOptions(string $equipements_et_options): static
+    public function setEquipements(string $equipements): static
     {
-        $this->equipements_et_options = $equipements_et_options;
+        $this->equipements = $equipements;
 
         return $this;
     }

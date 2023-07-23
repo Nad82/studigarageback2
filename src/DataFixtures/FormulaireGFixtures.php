@@ -14,7 +14,7 @@ class FormulaireGFixtures extends Fixture
         $formulaireG1->setNom('Jean');
         $formulaireG1->setPrenom('Dupont');
         $formulaireG1->setEmail('dupontjean@gmail.fr');
-        $formulaireG1->setNumeroDeTelephone('0606060606');
+        $formulaireG1->setTelephone('0606060606');
         $formulaireG1->setMessage('Bonjour, Faites vous des réparations sur les voitures de type Lan Rover?');
         $manager->persist($formulaireG1);
 
@@ -22,7 +22,7 @@ class FormulaireGFixtures extends Fixture
         $formulaireG2->setNom('Pierre');
         $formulaireG2->setPrenom('Martin');
         $formulaireG2->setEmail('pierremartin@gmailcom');
-        $formulaireG2->setNumeroDeTelephone('0606060606');
+        $formulaireG2->setTelephone('0606060606');
         $formulaireG2->setMessage('Bonjour, Changez-vous les climatisations?');
         $manager->persist($formulaireG2);
 ;

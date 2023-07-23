@@ -3,7 +3,7 @@
 {% block title %}Temoignage{% endblock %}
 
 {% block body %}
-h1>Temoignage</h1>
+    <h1>Temoignage</h1>
 
     <table class="table">
         <thead>
@@ -13,30 +13,31 @@ h1>Temoignage</h1>
                 <th scope= 'col'>prenom</th>
                 <th scope= 'col'>commentaires</th>
                 <th scope= 'col'>notes</th>
+                <th scope= 'col'>actions</th>
             </tr>
         </thead>
-        <tbody>
-        {% for temoignage in temoignages %}
-            <tr>
-                <td>{{ temoignage.id }}</td>
-                <td>{{ temoignage.nom }}</td>
-                <td>{{ temoignage.prenom }}</td>
-                <td>{{ temoignage.commentaires }}</td>
-                <td>{{ temoignage.notes }}</td>
-                <td>
-                    <a href="{{ path('temoignage_show', {'id': temoignage.id}) }}">Details</a>
-                    <a href="{{ path('temoignage_edit', {'id': temoignage.id}) }}">Modifier</a>
-                    <a href="{{ path('temoignage_delete', {'id': temoignage.id}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <tbody>
+                {% for temoignage in temoignages %}
+                    <tr>
+                        <td>{{temoignage.id}}</td>
+                        <td>{{temoignage.nom}}</td>
+                        <td>{{temoignage.prenom}}</td>
+                        <td>{{temoignage.commentaires}}</td>
+                        <td>{{temoignage.notes}}</td>
+                        <td>
+                            <a href="{{path('temoignage_show', {'id': temoignage.id})}}">Details</a>
+                            <a href="{{path('temoignage_edit', {'id': temoignage.id})}}">Modifier</a>
+                            <a href="{{path('temoignage_delete', {'id': temoignage.id})}}">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucune donnée trouvée</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <a href="{{path('temoignage_create')}}">Creer un temoignage</a>
 
-    <a href="{{ path('temoignage_create') }}">Nouvel temoignage</a>
 {% endblock %}
 

@@ -12,11 +12,15 @@ class VehiculeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('imageFilename')
+            ->add('image', FileType::class, [
+                'label' => 'Image (JPG, PNG, GIF)',
+                'mapped' => false,
+                'required' => false,
+            ])
             ->add('prix')
             ->add('kilometrage')
-            ->add('annee_circulation')
-            ->add('equipements_et_options')
+            ->add('annee')
+            ->add('equipements')
         ;
     }
 
