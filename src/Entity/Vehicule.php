@@ -12,7 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: VehiculeRepository::class)]
 class Vehicule
 {   
-    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -30,7 +29,7 @@ class Vehicule
         maxMessage: 'Le prix doit contenir au maximum {{ limit }} caractères'
     )]
     #[Assert\Regex(
-        pattern: '/^[0-9]+€/',
+        pattern: '/^[0-9]/',
         message: 'Le prix doit contenir uniquement des chiffres'
     )]
     private ?int $prix = null;
@@ -44,7 +43,7 @@ class Vehicule
         maxMessage: 'Le kilométrage doit contenir au maximum {{ limit }} caractères'
     )]
     #[Assert\Regex(
-        pattern: '/^[0-9]+km/',
+        pattern: '/^[0-9]/',
         message: 'Le kilométrage doit contenir uniquement des chiffres'
     )]
     private ?int $kilometrage = null;
@@ -87,7 +86,7 @@ class Vehicule
         return $this->imageFileName;
     }
 
-    public function setImageFilename(?string $imageFileName): static
+    public function setImageFilename(?string $imageFileName): self
     {
         $this->imageFileName = $imageFileName;
 

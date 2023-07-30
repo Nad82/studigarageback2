@@ -1,44 +1,32 @@
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-    
+<nav class="navbar navbar-expand-sm bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{path('app_home')}}">V.Parrot</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button> 
-        <form class="d-flex">
-                <input class="form-control me-sm-2" type="search" placeholder="Recherche">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
-        </form>
-        <div class= "container fluid">
-            <h3 class="text-center">Espace Employe Garage V.Parrot</h3>
-        </div>
+        <a class="navbar-brand" href="{{path('app_home')}}">
+        <img src="{{asset ('media/V.PARROT GARAGE Logo .png')}}" alt="Logo" width="65" height="56" class="d-inline-block align-text-top"></a>
         <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
-                        <div class="dropdown-menu">
-                            <!--espace employe--> <!--espace administrateur-->
-                            <a class="dropdown-item" href="{{path('page_formulaireG')}}">Contacter les clients pour l'atelier</a>
-                            <!--espace employe--> <!--espace administrateur-->
-                            <a class="dropdown-item" href="{{path('page_formulaireV')}}">Contacter les clients pour les véhicules</a>
-                            <!--espace employe--> <!--espace administrateur-->
-                            <a class="dropdown-item" href="{{path('page_gestion_des_vehicules')}}">Gestion des vehicules</a>
-                            <!--espace employe--> <!--espace administrateur-->
-                            <a class="dropdown-item" href="{{path('page_gestion_des_temoignages')}}">Gestion des temoignages</a>
-                            <!--espace administrateur-->
-                            <a class="dropdown-item" href="{{path('page_administrateur')}}">Compte Administrateur</a>
-                            <!--espace administrateur-->
-                            <a class="dropdown-item" href="{{path('page_creation_employe')}}">Compte Employes</a>
-                            <!--espace administrateur-->
-                            <a class="dropdown-item" href="{{path('page_horaires_garage')}}">Horaires Garage</a>
-                            <!--espace administrateur-->
-                            <a class="dropdown-item" href="{{path('page_gestion_services_garage')}}">Services Garage</a>
-                        </div>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{path('page_formulaireG')}}">Contacter les clients pour l'atelier</a>
+                        <a class="dropdown-item" href="{{path('page_formulaireV')}}">Contacter les clients pour les véhicules</a>
+                        <a class="dropdown-item" href="{{path('page_gestion_des_vehicules')}}">Gestion des vehicules</a>
+                        <a class="dropdown-item" href="{{path('page_gestion_des_temoignages')}}">Gestion des temoignages</a>
+                        {%if is_granted('ROLE_ADMIN') %}
+                        <a class="dropdown-item" href="{{path('page_administrateur')}}">Compte Administrateur</a>
+                        <a class="dropdown-item" href="{{path('page_creation_employe')}}">Compte Employes</a>
+                        <a class="dropdown-item" href="{{path('page_horaires_garage')}}">Horaires Garage</a>
+                        <a class="dropdown-item" href="{{path('page_gestion_services_garage')}}">Services Garage</a>
+                        {%endif%}
+                        <a class="dropdown-item" href="{{path('page_deconnexion')}}">Deconnexion</a>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="btn btn-secondary my-2 my-sm-0" href="#">Deconnexion</a>
-                </li>
-            </ul>       
+            </ul>
+        </div>
+        <div>
+        <form class="d-flex">
+            <input class="form-control me-sm-2" type="search" placeholder="Recherche">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
+        </form>
         </div>
     </div>
 </nav>

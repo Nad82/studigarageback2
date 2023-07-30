@@ -38,8 +38,9 @@ class VehiculeController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('images')->getData();
 
-            $imageFile = $form->get('image')->getData();
             if ($imageFile){
                 $imageFileName = $fileUploader->upload($imageFile);
                 $vehicule->setImageFilename($imageFileName);
@@ -59,9 +60,9 @@ class VehiculeController extends AbstractController
             }
             $vehicule->setImageFilename($newFileName);
         }
-            $repo->save($vehicule, true);
-            $this->addFlash('success', 'Vous avez bien ajouté un vehicule avec succès');
-            return $this->redirectToRoute('vehicule_index');
+        $repo->save($vehicule, true);
+        $this->addFlash('success', 'Vous avez bien ajouté un vehicule avec succès');
+        return $this->redirectToRoute('vehicule_index');
         }
             return $this->render('vehicule/create.html.twig', [
             'form' => $form,
@@ -76,12 +77,13 @@ class VehiculeController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-
+            /** @var UploadedFile $imageFile */
             $imageFile = $form->get('image')->getData();
             if ($imageFile){
                 $imageFileName = $fileUploader->upload($imageFile);
                 $vehicule->setImageFilename($imageFileName);
             }
+
             if ($imageFile) {
                 $originalFileName = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFileName = $slugger->slug($originalFileName);
@@ -97,9 +99,9 @@ class VehiculeController extends AbstractController
             }
             $vehicule->setImageFilename($newFileName);
         }
-            $repo->save($vehicule, true);
-            $this->addFlash('success', 'Vous avez bien modifié le vehicule avec succès');
-            return $this->redirectToRoute('vehicule_index');
+        $repo->save($vehicule, true);
+        $this->addFlash('success', 'Vous avez bien modifié le vehicule avec succès');
+        return $this->redirectToRoute('vehicule_index');
         }
         return $this->render('vehicule/edit.html.twig', [
             'form' => $form,

@@ -21,26 +21,24 @@ class VehiculeType extends AbstractType
             ->add('kilometrage')
             ->add('annee')
             ->add('equipements')
-            ->add('image', FileType::class, [
-                'label' => 'Image (JPG, PNG, GIF)',
+            ->add('images', FileType::class, [
+                'label' => 'Images (png, jpeg file)',
+                'multiple' => true,
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '5000k',
                         'mimeTypes' => [
-                            'image/jpeg',
-                            'image/png',
-                            'image/gif',
+                            'png',
+                            'jpeg',
                         ],
-                        'mimeTypesMessage' => 'Veuillez uploader une image valide',
+                        'mimeTypesMessage' => 'Salut, veuillez uploader un fichier valide',
                     ])
                 ],
             ])
-
         ;
     }
-
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

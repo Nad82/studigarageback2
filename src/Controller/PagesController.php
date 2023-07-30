@@ -76,4 +76,20 @@ class PagesController extends AbstractController
             'title' => 'Administrateur',
         ]);
     }
+    #[Route('/connexion', name: 'page_connexion')]
+    public function connexion(): Response
+    {
+        return $this->render('pages/index.html.twig', [
+            'controller_name' => 'PagesController',
+            'title' => 'Connexion',
+        ]);
+    }
+    #[Route('/logout', name: 'page_deconnexion')]
+    public function logout(): Response
+    {
+        return $this->render('pages/index.html.twig', [
+            'controller_name' => 'PagesController',
+            'title' => 'Logout',
+        ]);
+    }
 }
