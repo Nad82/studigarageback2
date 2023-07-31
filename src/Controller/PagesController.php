@@ -33,15 +33,22 @@ class PagesController extends AbstractController
             'title' => 'Services',
         ]);
     }
-    #[Route('/vehicule', name: 'page_gestion_des_vehicules')]
+    #[Route('/gestion/vehicule', name: 'page_gestion_des_vehicules')]
+    public function vehiculeGestion(): Response
+    {
+        return $this->render('pages/index.html.twig', [
+            'controller_name' => 'PagesController',
+            'title' => 'Gestion des vehicules',
+        ]);
+    }
+    #[Route('/vehicule', name: 'page_liste_vehicules')]
     public function vehicule(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Vehicule',
+            'title' => 'Liste des vehicules',
         ]);
     }
-
     #[Route('/temoignage', name: 'page_gestion_des_temoignages')]
     public function temoignage(): Response
     {

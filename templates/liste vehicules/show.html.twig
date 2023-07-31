@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Details vehicule{% endblock %}
+
+{% block body %}
+    <h1>Details vehicule</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th= scope>id</th>
+                <td>{{ vehicule.id }}</td>
+            </tr>
+            <tr>
+                <th>imageFileName</th>
+                <td>
+                <img src={{ asset('uploads/' ~ vehicule.imageFileName) }} alt="image" width="200" height="200">
+                </td>
+            </tr>
+            <tr>
+                <th>prix</th>
+                <td>{{ vehicule.prix }}</td>
+            </tr>
+            <tr>
+                <th>kilometrage</th>
+                <td>{{ vehicule.kilometrage }}</td>
+            </tr>
+            <tr>
+                <th>annee</th>
+                <td>{{ vehicule.annee }}</td>
+            </tr>
+            <tr>
+                <th>equipements</th>
+                <td>{{ vehicule.equipements }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{path('vehicule_index')}}">Retour</a>
+
+{% endblock %}

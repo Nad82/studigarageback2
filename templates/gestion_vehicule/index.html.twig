@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicule{% endblock %}
+
+{% block body %}
+    <h1>Vehicule</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>image</th>
+                <th>prix</th>
+                <th>kilometrage</th>
+                <th>annee</th>
+                <th>equipements</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vehicule in vehicules %}
+            <tr>
+                <td>{{ vehicule.id }}</td>
+                <td>
+                    <img src="{{ asset('uploads/' ~ vehicule.imageFileName) }}" alt="" width="200" height="200">
+                </td>
+                <td>{{ vehicule.prix }}</td>
+                <td>{{ vehicule.kilometrage }}</td>
+                <td>{{ vehicule.annee }}</td>
+                <td>{{ vehicule.equipements }}</td>
+                <td>
+                    <a href="{{ path('app_gestion_vehicule_show', {'id': vehicule.id}) }}">show</a>
+                    <a href="{{ path('app_gestion_vehicule_edit', {'id': vehicule.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_gestion_vehicule_new') }}">Create new</a>
+{% endblock %}
