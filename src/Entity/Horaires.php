@@ -19,8 +19,8 @@ class Horaires
     #[Assert\Length(
         min: 6,
         max: 50,
-        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le nom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le nom doit contenir au moins 6 caractères',
+        maxMessage: 'Le nom doit contenir au maximum 50 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -33,8 +33,8 @@ class Horaires
     #[Assert\Length(
         min: 6,
         max: 50,
-        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le nom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le nom doit contenir au moins 6 caractères',
+        maxMessage: 'Le nom doit contenir au maximum 50 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -47,8 +47,8 @@ class Horaires
     #[Assert\Length(
         min: 6,
         max: 50,
-        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le nom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le nom doit contenir au moins 6 caractères',
+        maxMessage: 'Le nom doit contenir au maximum 50 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -61,8 +61,8 @@ class Horaires
     #[Assert\Length(
         min: 6,
         max: 50,
-        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le nom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le nom doit contenir au moins 6 caractères',
+        maxMessage: 'Le nom doit contenir au maximum 50 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -75,8 +75,8 @@ class Horaires
     #[Assert\Length(
         min: 6,
         max: 50,
-        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le nom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le nom doit contenir au moins 6 caractères',
+        maxMessage: 'Le nom doit contenir au maximum 50 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -89,8 +89,8 @@ class Horaires
     #[Assert\Length(
         min: 6,
         max: 50,
-        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le nom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le nom doit contenir au moins 6 caractères',
+        maxMessage: 'Le nom doit contenir au maximum 50 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -103,8 +103,8 @@ class Horaires
     #[Assert\Length(
         min: 6,
         max: 50,
-        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le nom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le nom doit contenir au moins 6 caractères',
+        maxMessage: 'Le nom doit contenir au maximum 50 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',

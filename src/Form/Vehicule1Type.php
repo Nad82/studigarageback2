@@ -7,20 +7,20 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class GestionVehiculeType extends AbstractType
+
+
+
+class Vehicule1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
+            ->add('imageFileName')
             ->add('prix')
             ->add('kilometrage')
             ->add('annee')
-            ->add('equipements')
-            ->add('image', FileType::class, [
-                'label' => 'Image (JPG, JPEG, PNG, GIF)',
-                'multiple' => true,
-                'mapped' => false,
-                'required' => false,]);
+            ->add('equipements');
     }
     public function configureOptions(OptionsResolver $resolver): void
     {

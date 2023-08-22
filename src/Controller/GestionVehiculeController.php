@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Vehicule;
-use App\Form\GestionVehiculeType;
+use App\Form\VehiculeType;
 use App\Repository\VehiculeRepository;
 use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GestionVehiculeController extends AbstractController
 {
-    #[Route('/', name: 'app_gestion_vehicule_index', methods: ['GET'])]
+    #[Route('/gestion/vehicule', name: 'gestion_vehicule_index', methods: ['GET'])]
     public function index(VehiculeRepository $vehiculeRepository): Response
     {
         return $this->render('gestion_vehicule/index.html.twig', [
@@ -23,11 +23,11 @@ class GestionVehiculeController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_gestion_vehicule_new', methods: ['GET', 'POST'])]
+    #[Route('/gestion/vehicule/new', name: 'gestion_vehicule_new', methods: ['GET', 'POST'])]
     public function new(Request $request, FileUploader $fileUploader, EntityManagerInterface $entityManager): Response
     {
         $vehicule = new Vehicule();
-        $form = $this->createForm(GestionVehiculeType::class, $vehicule);
+        $form = $this->createForm(VehiculeType::class, $vehicule);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -40,7 +40,7 @@ class GestionVehiculeController extends AbstractController
             $entityManager->persist($vehicule);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_gestion_vehicule_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('gestion_vehicule_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('gestion_vehicule/new.html.twig', [
@@ -49,7 +49,7 @@ class GestionVehiculeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_gestion_vehicule_show', methods: ['GET'])]
+    #[Route('/gestion/vehicule/{id}', name: 'gestion_vehicule_show', methods: ['GET'])]
     public function show(Vehicule $vehicule): Response
     {
         return $this->render('gestion_vehicule/show.html.twig', [
@@ -57,10 +57,10 @@ class GestionVehiculeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_gestion_vehicule_edit', methods: ['GET', 'POST'])]
+    #[Route('/gestion/vehicule/{id}/edit', name: 'gestion_vehicule_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Vehicule $vehicule, FileUploader $fileUploader, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(GestionVehiculeType::class, $vehicule);
+        $form = $this->createForm(VehiculeType::class, $vehicule);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -73,7 +73,7 @@ class GestionVehiculeController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_gestion_vehicule_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('gestion_vehicule_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('gestion_vehicule/edit.html.twig', [
@@ -82,7 +82,7 @@ class GestionVehiculeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_gestion_vehicule_delete', methods: ['POST'])]
+    #[Route('/gestion/vehicule/{id}', name: 'gestion_vehicule_delete', methods: ['POST'])]
     public function delete(Request $request, Vehicule $vehicule, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$vehicule->getId(), $request->request->get('_token'))) {
@@ -90,6 +90,6 @@ class GestionVehiculeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_gestion_vehicule_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('gestion_vehicule_index', [], Response::HTTP_SEE_OTHER);
     }
 }

@@ -19,8 +19,8 @@ class Temoignage
     #[Assert\Length(
         min: 2,
         max: 20,
-        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le nom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le nom doit contenir au moins 2 caractères',
+        maxMessage: 'Le nom doit contenir au maximum 20 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -33,8 +33,8 @@ class Temoignage
     #[Assert\Length(
         min: 2,
         max: 20,
-        minMessage: 'Le prénom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le prénom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le prénom doit contenir au moins 2 caractères',
+        maxMessage: 'Le prénom doit contenir au maximum 20 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -47,8 +47,8 @@ class Temoignage
     #[Assert\Length(
         min: 2,
         max: 255,
-        minMessage: 'Le commentaire doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le commentaire doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le commentaire doit contenir au moins 2 caractères',
+        maxMessage: 'Le commentaire doit contenir au maximum 255 caractères'
     )]
     private ?string $commentaires = null;
 
@@ -57,14 +57,15 @@ class Temoignage
     #[Assert\Length(
         min: 1,
         max: 5,
-        minMessage: 'La note doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'La note doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'La note doit contenir au moins 1 caractères',
+        maxMessage: 'La note doit contenir au maximum 5 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[0-9]+$/',
         message: 'La note doit contenir uniquement des chiffres'
     )]
     private ?int $notes = null;
+
 
     public function getId(): ?int
     {

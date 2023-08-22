@@ -14,13 +14,14 @@ class FormulaireV
     #[ORM\Column]
     private ?int $id = null;
 
+
     #[ORM\Column(length: 20)]
     #[Assert\NotBlank(message: 'Le nom est obligatoire')]
     #[Assert\Length(
         min: 2,
         max: 20,
-        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le nom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le nom doit contenir au moins 2 caractères',
+        maxMessage: 'Le nom doit contenir au maximum 20 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -33,8 +34,8 @@ class FormulaireV
     #[Assert\Length(
         min: 2,
         max: 20,
-        minMessage: 'Le prénom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le prénom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le prénom doit contenir au moins 2 caractères',
+        maxMessage: 'Le prénom doit contenir au maximum 20 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -48,12 +49,13 @@ class FormulaireV
     #[Assert\Length(
         min: 10,
         max: 35,
-        minMessage: 'L\'email doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'L\'email doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'L\'email doit contenir au moins 10 caractères',
+        maxMessage: 'L\'email doit contenir au maximum 35 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-zA-Z]{2,4}$/',
-        message: 'L\'email doit contenir uniquement des lettres, des chiffres, des points, des tirets et des underscores'
+        message: 'L\'email doit contenir uniquement des lettres, des chiffres, des points, des tirets
+        et des underscores'
     )]
     private ?string $email = null;
 
@@ -62,8 +64,8 @@ class FormulaireV
     #[Assert\Length(
         min: 10,
         max: 15,
-        minMessage: 'Le numéro de téléphone doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le numéro de téléphone doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le numéro de téléphone doit contenir au moins 10 caractères',
+        maxMessage: 'Le numéro de téléphone doit contenir au maximum 15 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[0-9]+$/',
@@ -76,20 +78,23 @@ class FormulaireV
     #[Assert\Length(
         min: 10,
         max: 255,
-        minMessage: 'Le message doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le message doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le message doit contenir au moins 10 caractères',
+        maxMessage: 'Le message doit contenir au maximum 255 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z0-9._-]+$/',
-        message: 'Le message doit contenir uniquement des lettres, des chiffres, des points, des tirets et des underscores'
+        message: 'Le message doit contenir uniquement des lettres, des chiffres, des points, des
+        tirets et des underscores'
     )]
     private ?string $message = null;
+
+    #[ORM\ManyToOne]
+    private ?Vehicule $vehicule = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
-
     public function getNom(): ?string
     {
         return $this->nom;
@@ -146,6 +151,18 @@ class FormulaireV
     public function setMessage(string $message): static
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getVehicule(): ?Vehicule
+    {
+        return $this->vehicule;
+    }
+
+    public function setVehicule(?Vehicule $vehicule): static
+    {
+        $this->vehicule = $vehicule;
 
         return $this;
     }

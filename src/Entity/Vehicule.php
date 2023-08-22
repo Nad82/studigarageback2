@@ -8,10 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
-
 #[ORM\Entity(repositoryClass: VehiculeRepository::class)]
 class Vehicule
-{   
+{
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -25,8 +24,8 @@ class Vehicule
     #[Assert\Length(
         min: 4,
         max: 10,
-        minMessage: 'Le prix doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le prix doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le prix doit contenir au moins 4 caractères',
+        maxMessage: 'Le prix doit contenir au maximum 10 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[0-9]/',
@@ -39,8 +38,8 @@ class Vehicule
     #[Assert\Length(
         min: 4,
         max: 6,
-        minMessage: 'Le kilométrage doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le kilométrage doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le kilométrage doit contenir au moins 4 caractères',
+        maxMessage: 'Le kilométrage doit contenir au maximum 6 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[0-9]/',
@@ -53,8 +52,8 @@ class Vehicule
     #[Assert\Length(
         min: 4,
         max: 4,
-        minMessage: 'L\'année de circulation doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'L\'année de circulation doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'L\'année de circulation doit contenir au moins 4 caractères',
+        maxMessage: 'L\'année de circulation doit contenir au maximum 4 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[0-9]+/',
@@ -67,8 +66,8 @@ class Vehicule
     #[Assert\Length(
         min: 6,
         max: 255,
-        minMessage: 'Les équipements et options doivent contenir au moins {{ limit }} caractères',
-        maxMessage: 'Les équipements et options doivent contenir au maximum {{ limit }} caractères'
+        minMessage: 'Les équipements et options doivent contenir au moins 6 caractères',
+        maxMessage: 'Les équipements et options doivent contenir au maximum 255 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z0-9]+/',

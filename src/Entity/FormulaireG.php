@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\FormulaireGRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert; 
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: FormulaireGRepository::class)]
 class FormulaireG
@@ -19,8 +19,8 @@ class FormulaireG
     #[Assert\Length(
         min: 2,
         max: 25,
-        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le nom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le nom doit contenir au moins 2 caractères',
+        maxMessage: 'Le nom doit contenir au maximum 25 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -33,8 +33,8 @@ class FormulaireG
     #[Assert\Length(
         min: 2,
         max: 25,
-        minMessage: 'Le prénom doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le prénom doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le prénom doit contenir au moins 2 caractères',
+        maxMessage: 'Le prénom doit contenir au maximum 25 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z]+$/',
@@ -48,12 +48,13 @@ class FormulaireG
     #[Assert\Length(
         min: 10,
         max: 35,
-        minMessage: 'L\'email doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'L\'email doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'L\'email doit contenir au moins 10 caractères',
+        maxMessage: 'L\'email doit contenir au maximum 35 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-zA-Z]{2,4}$/',
-        message: 'L\'email doit contenir uniquement des lettres, des chiffres, des points, des tirets et des underscores'
+        message: 'L\'email doit contenir uniquement des lettres, des chiffres, des points, des
+        tirets et des underscores'
     )]
     private ?string $email = null;
 
@@ -62,8 +63,8 @@ class FormulaireG
     #[Assert\Length(
         min: 10,
         max: 15,
-        minMessage: 'Le téléphone doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le téléphone doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le téléphone doit contenir au moins 10 caractères',
+        maxMessage: 'Le téléphone doit contenir au maximum 15 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[0-9]+$/',
@@ -76,12 +77,13 @@ class FormulaireG
     #[Assert\Length(
         min: 10,
         max: 255,
-        minMessage: 'Le message doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'Le message doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'Le message doit contenir au moins 10 caractères',
+        maxMessage: 'Le message doit contenir au maximum 255 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z0-9._-]+$/',
-        message: 'Le message doit contenir uniquement des lettres, des chiffres, des points, des tirets et des underscores'
+        message: 'Le message doit contenir uniquement des lettres, des chiffres, des points, des
+        tirets et des underscores'
     )]
     private ?string $message = null;
 

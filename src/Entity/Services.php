@@ -20,12 +20,13 @@ class Services
     #[Assert\Length(
         min: 10,
         max: 255,
-        minMessage: 'La description doit contenir au moins {{ limit }} caractères',
-        maxMessage: 'La description doit contenir au maximum {{ limit }} caractères'
+        minMessage: 'La description doit contenir au moins 10 caractères',
+        maxMessage: 'La description doit contenir au maximum 255 caractères'
     )]
     #[Assert\Regex(
         pattern: '/^[a-zA-Z0-9._-]+$/',
-        message: 'La description doit contenir uniquement des lettres, des chiffres, des points, des tirets et des underscores'
+        message: 'La description doit contenir uniquement des lettres, des chiffres, des points, des
+        tirets et des underscores'
     )]
     private ?string $description = null;
 

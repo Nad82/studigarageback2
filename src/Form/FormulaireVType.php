@@ -12,6 +12,7 @@ class FormulaireVType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('vehicule')
             ->add('nom')
             ->add('prenom')
             ->add('email')
