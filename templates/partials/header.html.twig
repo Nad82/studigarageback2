@@ -1,51 +1,33 @@
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-sm bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
-                <a class="navbar-brand" href="{{path('app_home')}}">V.Parrot</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarColor01">
-                    </ul>
-                        <form class="d-flex">
-                        <input class="form-control me-sm-2" type="search" placeholder="Recherche">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
-                        </form>
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Accueil
-                            <span class="visually-hidden">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{path('page_gestion_des_vehicules')}}">Gestion des véhicules</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{path('page_gestion_contact_clients')}}" role="button" aria-haspopup="true" aria-expanded="false">Contacter les clients</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{path('page_contact_client_atelier')}}">Contacter les clients pour l'atelier</a>
-                                    <a class="dropdown-item" href="{{path('page_contact_client_vehicules')}}">Contacter les clients pour les véhicules</a>
-                                </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{path('page_gestion_des_temoignages')}}" role="button" aria-haspopup="true" aria-expanded="false">Témoignages</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{path('page_validation_temoignages_clients')}}">Validation témoignages</a>
-                                    <a class="dropdown-item" href="{{path('page_entree_temoignages_clients')}}">Entrée témoignages clients</a>
-                                </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{path('page_creation_employes')}}">Création compte employé</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{path('page_gestion_infos_garage')}}" role="button" aria-haspopup="true" aria-expanded="false">Gestion des infos du garage</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{path('page_gestion_horaires_garage')}}">Définition des horaires</a>
-                                    <a class="dropdown-item" href="{{path('page_gestion_services_garage')}}">Entrée des différents services</a>
-                                </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-secondary my-2 my-sm-0" href="#">Déconnexion</a>
-                    
-                </div>
+        <a class="navbar-brand" href="{{path('app_home')}}">
+        <img src="{{asset ('media/V.PARROT GARAGE Logo .png')}}" alt="Logo" width="65" height="56" class="d-inline-block align-text-top"></a>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{path('page_formulaireG')}}">Contacter les clients pour l'atelier</a>
+                        <a class="dropdown-item" href="{{path('page_formulaireV')}}">Contacter les clients pour les véhicules</a>
+                        <a class="dropdown-item" href="{{path('page_gestion_des_vehicules')}}">Gestion des vehicules</a>
+                        <a class="dropdown-item" href="{{path('page_liste_vehicules')}}">Liste des vehicules</a>
+                        <a class="dropdown-item" href="{{path('page_gestion_des_temoignages')}}">Gestion des temoignages</a>
+                        {%if is_granted('ROLE_ADMIN') %}
+                        <a class="dropdown-item" href="{{path('page_administrateur')}}">Compte Administrateur</a>
+                        <a class="dropdown-item" href="{{path('page_creation_employe')}}">Compte Employes</a>
+                        <a class="dropdown-item" href="{{path('page_horaires_garage')}}">Horaires Garage</a>
+                        <a class="dropdown-item" href="{{path('page_gestion_services_garage')}}">Services Garage</a>
+                        {%endif%}
+                        <a class="dropdown-item" href="{{path('page_deconnexion')}}">Deconnexion</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div>
+        <form class="d-flex">
+            <input class="form-control me-sm-2" type="search" placeholder="Recherche">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
+        </form>
+        </div>
     </div>
 </nav>

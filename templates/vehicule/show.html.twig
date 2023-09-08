@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Details vehicule{% endblock %}
+
+{% block body %}
+    <h1>Details vehicule</h1>
+
+    <div class="card">
+        <img src="{{ asset('uploads/' ~ vehicule.imageFileName) }}" width="200" height="200"/>
+        <div class="card-body">
+            <h5 class="card-title">Référence {{ vehicule.id }}</h5>
+            <p class="card-text">Prix: {{ vehicule.prix }} €</p>
+            <p class="card-text">Kilométrage: {{ vehicule.kilometrage }} km</p>
+            <p class="card-text">Mise en circulation: {{ vehicule.annee }}</p>
+            <p class="card-text">Equipements et options: {{ vehicule.equipements }}</p>
+            <a href="{{ path('vehicule_index') }}" class="btn btn-primary">Retour</a>
+        </div>
+    </div>
+
+{% endblock %}

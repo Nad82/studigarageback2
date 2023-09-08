@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suppression Formulaire Atelier{% endblock %}
+
+{% block body %}
+    <h1>Suppression Formulaire Atelier</h1>
+
+    {{ include("/formulaire_g_delete.html.twig" , {'button_label': 'Supprimer'})}}
+
+    <a href="{{path('formulaire_g_index')}}">Retour</a>
+
+{% endblock %}

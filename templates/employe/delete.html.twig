@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suppression compte Employe{% endblock %}
+
+{% block body %}
+    <h1>Suppression compte Employe</h1>
+
+    {{ include("/employe/_delete.html.twig" , {'button_label': 'Supprimer'})}}
+
+    <a href="{{path('employe_index')}}">Retour</a>
+
+{% endblock %}

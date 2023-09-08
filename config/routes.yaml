@@ -4,28 +4,38 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-   # page_creation_employes:
-       # path: /employes
-       # controller: App\Controller\PagesController::employes
+    #page_creation_employe:
+        #path: /employe
+        #controller: App\Controller\PagesController::employe
+    
+    #page_horaires_garage:
+        #path: /horaires
+        #controller: App\Controller\PagesController::horaires
 
-  #  page_gestion_infos_garage:
-       # path: /informations
-       # controller: App\Controller\PagesController::informations
+    #page_gestion_services_garage:
+        #path: /services
+        #controller: App\Controller\PagesController::services
 
-   # page_gestion_des_vehicules:
-       # path: /vehicules
-       # controller: App\Controller\PagesController::vehicules
+    #page_gestion_des_vehicules:
+        #path: /vehicules
+        #controller: App\Controller\PagesController::vehicules
 
-   # page_gestion_des_temoignages:
-      #  path: /validation
-      #  controller: App\Controller\PagesController::validation
+    #page_gestion_des_temoignages:
+        #path:/temoignage
+        #controller: App\Controller\PagesController::temoignage
 
-   # page_entree_temoignages_clients:
-       # path: /temoignages
-       # controller: App\Controller\PagesController::temoignages
+    #page_formulaireG:
+        #path: /formulaire_g
+        #controller: App\Controller\PagesController::formulaireG
 
-    #page_gestion_contact_clients:
-   # path: /contact
-    #controller: App\Controller\PagesController::contact
+    #page_formulaireV:
+        #path: /formulaire_v
+        #controller: App\Controller\PagesController::formulaireV
+
+    #page_administrateur:
+        #path: /administrateur
+        #controller: App\Controller\PagesController::administrateur
+
+
 
 

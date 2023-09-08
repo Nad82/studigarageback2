@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification temoignage{% endblock %}
+
+{% block body %}
+    <h1>Modifier temoignage</h1>
+
+    {{ include("/temoignage/_form.html.twig" , {'button_label': 'Modifier'}) }}
+
+    <a href="{{path('temoignage_index')}}">Retour</a>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification Horaires{% endblock %}
+
+{% block body %}
+    <h1>Modifier Horaires</h1>
+
+    {{ include("/horaires/_form.html.twig" , {'button_label': 'Modifier'}) }}
+
+    <a href="{{path('horaires_index')}}">Retour</a>
+
+{% endblock %}

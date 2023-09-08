@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creer un nouveau temoignage{% endblock %}
+
+{% block body %}
+    <h1>Creer un nouveau temoignage</h1>   
+    
+    {{ include('temoignage/_form.html.twig') }}
+
+    <a href="{{path('temoignage_index')}}">Retour</a>
+
+{% endblock %}

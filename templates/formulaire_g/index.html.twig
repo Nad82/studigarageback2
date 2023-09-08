@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormulaireG{% endblock %}
+
+{% block body %}
+    <h1>Formulaire Atelier</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope= 'col'>id</th>
+                <th scope= 'col'>nom</th>
+                <th scope= 'col'>prenom</th>
+                <th scope= 'col'>email</th>
+                <th scope= 'col'>telephone</th>
+                <th scope= 'col'>message</th>
+                <th scope= 'col'>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for formulaireG in formulaireGs %}
+                <tr>
+                    <td>{{ formulaireG.id }}</td>
+                    <td>{{ formulaireG.nom }}</td>
+                    <td>{{ formulaireG.prenom }}</td>
+                    <td>{{ formulaireG.email }}</td>
+                    <td>{{ formulaireG.telephone }}</td>
+                    <td>{{ formulaireG.message }}</td>
+                    <td>
+                    <a href="{{ path('formulaire_g_show',{'id': formulaireG.id})}}">Details</a>
+                    <a href="{{ path('formulaire_g_edit',{'id': formulaireG.id})}}">Modifier</a>
+                    <a href="{{ path('formulaire_g_delete' , {'id': formulaireG.id})}}">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">Aucune donnée trouvée</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

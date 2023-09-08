@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification Administrateur{% endblock %}
+
+{% block body %}
+    <h1>Modifier Administrateur</h1>
+
+    {{ include('administrateur/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('administrateur_index')}}">Retour</a>
+
+    {{ include('administrateur/_delete_form.html.twig') }}
+{% endblock %}

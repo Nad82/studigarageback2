@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormulaireV{% endblock %}
+
+{% block body %}
+    <h1>Formulaire Atelier Vehicule</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope= 'col'>id</th>
+                <th scope= 'col'>vehicule</th>
+                <th scope= 'col'>nom</th>
+                <th scope= 'col'>prenom</th>
+                <th scope= 'col'>email</th>
+                <th scope= 'col'>telephone</th>
+                <th scope= 'col'>message</th>
+                <th scope= 'col'>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formulaireV in formulaireVs %}
+            <tr>
+                <td>{{ formulaireV.id }}</td>
+                <td>{{ formulaireV.vehicule }}</td>
+                <td>{{ formulaireV.nom }}</td>
+                <td>{{ formulaireV.prenom }}</td>
+                <td>{{ formulaireV.email }}</td>
+                <td>{{ formulaireV.telephone }}</td>
+                <td>{{ formulaireV.message }}</td>
+                <td>
+                    <a href="{{ path('formulaire_v_show', {'id': formulaireV.id}) }}">Details</a>
+                    <a href="{{ path('formulaire_v_edit', {'id': formulaireV.id}) }}">Modifier</a>
+                    <a href="{{ path('formulaire_v_delete', {'id': formulaireV.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucune donnée trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

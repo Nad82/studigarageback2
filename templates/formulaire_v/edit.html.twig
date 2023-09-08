@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification Formulaire Vehicule{% endblock %}
+
+{% block body %}
+    <h1>Modifier Formulaire Vehicule</h1>
+
+    {{ include("/formulaire_v/_form.html.twig" , {'button_label': 'Modifier'}) }}
+
+    <a href="{{path('formulaire_v_index')}}">Retour</a>
+
+{% endblock %}

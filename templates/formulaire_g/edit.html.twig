@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification Formulaire Atelier{% endblock %}
+
+{% block body %}
+    <h1>Modifier Formulaire Atelier</h1>
+
+    {{ include("/formulaire_g/_form.html.twig" , {'button_label': 'Modifier'})}}
+
+    <a href="{{path('formulaire_g_index')}}">Retour</a>
+
+{% endblock %}

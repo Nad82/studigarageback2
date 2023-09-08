@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entrée horaires{% endblock %}
+
+{% block body %}
+    <h1>Entrée Horaires</h1>
+
+    {{ include('/horaires/_form.html.twig')}}
+
+    <a href="{{ path('horaires_index') }}">Retour</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suppression Formulaire Vehicule{% endblock %}
+
+{% block body %}
+    <h1>Suppression Formulaire Vehicule</h1>
+
+    {{ include("/formulaire_v_delete.html.twig" , {'button_label': 'Supprimer'})}}
+
+    <a href="{{path('formulaire_v_index')}}">Retour</a>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Vehicules{% endblock %}
+
+{% block body %}
+    <h1>Liste Vehicules</h1>
+
+    {% for vehicule in vehicules %}
+        
+        <div class="card mb-3">
+            <div class="row no gutters">
+                <img src= {{ asset('uploads/' ~ vehicule.imageFileName )}} width= '10'/>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Reférence {{ vehicule.id }}</h5>
+                    <p class="card-text">Prix: {{ vehicule.prix }} €</p>
+                    <p class="card-text">Mise en circulation: {{ vehicule.annee }}</p>
+                    <p class="card-text">Kilométrage: {{ vehicule.kilometrage }} km</p>
+                    <p class="card-text">Options et équipements: {{ vehicule.equipements }}</p>
+                    <a href="{{ path('vehicule_show', {'id': vehicule.id}) }}" class="btn btn-primary">Voir</a>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <p>Aucun vehicule trouvé.</p>
+    {% endfor %}
+
+{% endblock %}
+

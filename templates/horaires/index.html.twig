@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Horaires{% endblock %}
+
+{% block body %}
+    <h1>Horaires d'ouverture</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope= 'col'>id</th>
+                <th scope= 'col'>lundi</th>
+                <th scope= 'col'>mardi</th>
+                <th scope= 'col'>mercredi</th>
+                <th scope= 'col'>jeudi</th>
+                <th scope= 'col'>vendredi</th>
+                <th scope= 'col'>samedi</th>
+                <th scope= 'col'>dimanche</th>
+                <th scope= 'col'>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for horaires in horairess %}
+                <tr>
+                    <td>{{ horaires.id }}</td>
+                    <td>{{ horaires.lundi }}</td>
+                    <td>{{ horaires.mardi }}</td>
+                    <td>{{ horaires.mercredi }}</td>
+                    <td>{{ horaires.jeudi }}</td>
+                    <td>{{ horaires.vendredi }}</td>
+                    <td>{{ horaires.samedi }}</td>
+                    <td>{{ horaires.dimanche }}</td>
+                    <td>
+                        <a href="{{ path('horaires_show', {'id': horaires.id}) }}">Details</a>
+                        <a href="{{ path('horaires_edit', {'id': horaires.id}) }}">Modifier</a>
+                        <a href="{{ path('horaires_delete', {'id': horaires.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">Aucune donnée trouvée</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('horaires_create') }}">Nouveaux horaires</a>
+{% endblock %}

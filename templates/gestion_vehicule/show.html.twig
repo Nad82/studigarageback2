@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion Vehicule{% endblock %}
+
+{% block body %}
+    <h1>Gestion Vehicule</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>id</th>
+                <td>{{ vehicule.id }}</td>
+            </tr>
+            <tr>
+                <th>image</th>
+                <td>
+                    <img src="{{ asset('uploads/' ~ vehicule.imageFileName) }}" alt="" width="200" height="200"/>
+                </td>
+            <tr>
+                <th>prix</th>
+                <td>{{ vehicule.prix }}</td>
+            </tr>
+            <tr>
+                <th>kilometrage</th>
+                <td>{{ vehicule.kilometrage }}</td>
+            </tr>
+            <tr>
+                <th>annee</th>
+                <td>{{ vehicule.annee }}</td>
+            </tr>
+            <tr>
+                <th>equipements</th>
+                <td>{{ vehicule.equipements }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('gestion_vehicule_index') }}">back to list</a>
+
+    <a href="{{ path('gestion_vehicule_edit', {'id': vehicule.id}) }}">edit</a>
+
+    {{ include('gestion_vehicule/_delete_form.html.twig') }}
+{% endblock %}

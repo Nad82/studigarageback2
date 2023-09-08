@@ -8,102 +8,95 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PagesController extends AbstractController
 {
-    #[Route('/employes', name: 'page_creation_employes')]
-    public function employes(): Response
+    #[Route('/employe', name: 'page_creation_employe')]
+    public function employe(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Employes',
+            'title' => 'Employe',
         ]);
     }
     
-    #[Route('/informations', name: 'page_gestion_infos_garage')]
-    public function informations(): Response
-    {
-        return $this->render('pages/index.html.twig', [
-            'controller_name' => 'PagesController',
-            'title' => 'Informations',
-        ]);
-    }
-
-    #[Route('/horaires', name: 'page_gestion_horaires_garage')]
-    public function horaires(): Response
+    #[Route('/horaires', name: 'page_horaires_garage')]
+    public function horaire(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
             'title' => 'Horaires',
         ]);
     }
-
-    #[Route('/Services', name: 'page_gestion_services_garage')]
-    public function services(): Response
+    #[Route('/services', name: 'page_gestion_services_garage')]
+    public function service(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
             'title' => 'Services',
         ]);
     }
-
-    #[Route('/vehicules', name: 'page_gestion_des_vehicules')]
-    public function vehicules(): Response
+    #[Route('/gestion/vehicule', name: 'page_gestion_des_vehicules')]
+    public function vehiculeGestion(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Vehicules',
+            'title' => 'Gestion des vehicules',
+        ]);
+    }
+    #[Route('/vehicule', name: 'page_liste_vehicules')]
+    public function vehicule(): Response
+    {
+        return $this->render('pages/index.html.twig', [
+            'controller_name' => 'PagesController',
+            'title' => 'Liste des vehicules',
+        ]);
+    }
+    #[Route('/temoignage', name: 'page_gestion_des_temoignages')]
+    public function temoignage(): Response
+    {
+        return $this->render('pages/index.html.twig', [
+            'controller_name' => 'PagesController',
+            'title' => 'Temoignage',
         ]);
     }
 
-    #[Route('/moderation', name: 'page_gestion_des_temoignages')]
-    public function moderation(): Response
+    #[Route('/formulaire_g', name: 'page_formulaireG')]
+    public function formulaireG(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Moderation',
+            'title' => 'FormulaireG',
         ]);
     }
 
-    #[Route('/temoignages', name: 'page_entree_temoignages_clients')]
-    public function temoignages(): Response
+    #[Route('/formulaire_v', name: 'page_formulaireV')]
+    public function formulaireV(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Temoignages',
+            'title' => 'FormulaireV',
         ]);
     }
-
-    #[Route('/validation', name: 'page_validation_temoignages_clients')]
-    public function validation(): Response
+    #[Route('/administrateur', name: 'page_administrateur')]
+    public function administrateur(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Validation',
+            'title' => 'Administrateur',
         ]);
     }
-
-    #[Route('/contact', name: 'page_gestion_contact_clients')]
-    public function contact(): Response
+    #[Route('/connexion', name: 'page_connexion')]
+    public function connexion(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Contact',
+            'title' => 'Connexion',
         ]);
     }
-
-    #[Route('/atelier', name: 'page_contact_client_atelier')]
-    public function atelier(): Response
+    #[Route('/logout', name: 'page_deconnexion')]
+    public function logout(): Response
     {
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'PagesController',
-            'title' => 'Atelier',
-        ]);
-    }
-
-    #[Route('/garage', name: 'page_contact_client_vehicules')]
-    public function garage(): Response
-    {
-        return $this->render('pages/index.html.twig', [
-            'controller_name' => 'PagesController',
-            'title' => 'Garage',
+            'title' => 'Logout',
         ]);
     }
 }
